@@ -28,21 +28,38 @@
           <h4 class="text-center font-weight-bold mt-5 text-white">REGISTER HERE</h4>
             </div>
           <div class="card-body">
-            <form action="{{url('admin/register')}}" method="POST">
+            <form action="{{url('admin/register')}}" method="GET">
             @csrf
             <label for="firstname" class="font-weight-bold">Firstname :</label>
             <input type="text" name="firstname" class="form-control" placeholder="Enter your firstname">
-            
+             @if ($errors->has('firstname'))
+            <span class="text-danger">{{ $errors->first('firstname') }}</span><br>
+            @endif
             <label for="secondname" class="font-weight-bold">Secondname :</label>
             <input type="text" name="secondname" class="form-control" placeholder="Enter your secondname">
+             @if ($errors->has('secondname'))
+            <span class="text-danger">{{ $errors->first('secondname') }}</span><br>
+            @endif
             <label for="id" class="font-weight-bold">Id no :</label>
             <input type="number" name="id_no" class="form-control" placeholder="Enter your Id number">
+             @if ($errors->has('id_no'))
+            <span class="text-danger">{{ $errors->first('id_no') }}</span><br>
+            @endif
             <label for="phone" class="font-weight-bold">Phone no :</label>
             <input type="number" name="phone" class="form-control" placeholder="Enter your phone number">
+             @if ($errors->has('phone'))
+            <span class="text-danger">{{ $errors->first('phone') }}</span><br>
+            @endif
             <label for="password" class="font-weight-bold">Password :</label>
             <input type="password" name="password" class="form-control" placeholder="Enter password">
+             @if ($errors->has('password'))
+            <span class="text-danger">{{ $errors->first('password') }}</span><br>
+            @endif
             <label for="confirm password" class="font-weight-bold">Confirm Password :</label>
             <input type="password" name="re-password" class="form-control" placeholder="Re-Enter password">
+             @if ($errors->has('re-password'))
+            <span class="text-danger">{{ $errors->first('re-password') }}</span><br>
+            @endif
             <input type="submit" value="S I G N I N" class="font-weight-bold btn btn-primary form-control mt-2">
             <p>Already registered ?. <a href="{{url('login')}}">Login Here</a> </p>
             </form>

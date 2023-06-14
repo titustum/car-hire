@@ -62,7 +62,7 @@ class CarsController extends Controller
             'phone' => 'required',
             'id_no' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            're_passord' => 'required',
+            're-password' => 'required',
 
         ]);
            
