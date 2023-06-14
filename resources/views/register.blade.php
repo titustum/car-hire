@@ -32,6 +32,7 @@
             @csrf
             <label for="firstname" class="font-weight-bold">Firstname :</label>
             <input type="text" name="firstname" class="form-control" placeholder="Enter your firstname">
+            
             <label for="secondname" class="font-weight-bold">Secondname :</label>
             <input type="text" name="secondname" class="form-control" placeholder="Enter your secondname">
             <label for="id" class="font-weight-bold">Id no :</label>

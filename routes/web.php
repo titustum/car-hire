@@ -32,5 +32,8 @@ Route::get('setting', [CarsController::class, 'Setting']);
 Route::get('profile', [CarsController::class, 'Profile']);
 //login
 Route::get('admin/login', [CarsController::class, 'Login']);
+//register
+Route::get('admin/register', [CarsController::class, 'register']);
+
 
 
