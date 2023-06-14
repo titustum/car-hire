@@ -42,7 +42,7 @@ class CarsController extends Controller
    
         $credentials = $request->only('phone', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('index')
+            return redirect()->intended('/')
                         ->withSuccess('Signed in');
         }
   
@@ -60,37 +60,53 @@ class CarsController extends Controller
             'firstname' => 'required',
             'secondname' => 'required',
             'phone' => 'required',
-            'id_no' => 'required|email|unique:users',
+            'id_no' => 'required|unique:users',
             'password' => 'required|min:6',
-            're-password' => 'required',
+            're_password' => 'required',
 
         ]);
+        if($request->re_password != $request->password){
+            return redirect('register')->with('error','The password doesnt match');
+        }else{
            
         $data = $request->all();
-        $check = $this->create($data);
-         
-        return redirect("index")->withSuccess('You have signed-in');
+        // $check = $this->create($data);
+        
+        $user = new User;
+        $user->user_type = 'Admin';
+        $user->firstname = $request->firstname;
+        $user->secondname = $request->secondname;
+        $user->phone = $request->phone;
+        $user->id_no = $request->id_no;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect("/")->withSuccess('You have signed-in');
+        }
     }
 
+    //not used for now
     public function create(array $data)
     {
       return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
+        'firstname' => $data['firstname'],
+        'secondname' => $data['secondname'],
+        'phone' => $data['phone'],
+        'id_no' => $data['id_no'],
         'password' => Hash::make($data['password'])
       ]);
     }    
     
-    public function dashboard()
+    public function index()
     {
         if(Auth::check()){
-            return view('index');
+            return view('/');
         }
   
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     
-    public function signOut() {
+    public function Logout() {
         //made some changes here it was Session::flush();
         Session()->flush();
         Auth::logout();

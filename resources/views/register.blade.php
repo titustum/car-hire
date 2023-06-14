@@ -56,9 +56,12 @@
             <span class="text-danger">{{ $errors->first('password') }}</span><br>
             @endif
             <label for="confirm password" class="font-weight-bold">Confirm Password :</label>
-            <input type="password" name="re-password" class="form-control" placeholder="Re-Enter password">
+            <input type="password" name="re_password" class="form-control" placeholder="Re-Enter password">
              @if ($errors->has('re-password'))
             <span class="text-danger">{{ $errors->first('re-password') }}</span><br>
+            @endif
+            @if (session()->has('error'))
+            <span class="text-danger">{{session()->get('error')}}</span><br>
             @endif
             <input type="submit" value="S I G N I N" class="font-weight-bold btn btn-primary form-control mt-2">
             <p>Already registered ?. <a href="{{url('login')}}">Login Here</a> </p>

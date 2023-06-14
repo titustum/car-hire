@@ -29,6 +29,9 @@
             </div>
           <div class="card-body">
             <form action="{{url('admin/login')}}" method="GET">
+                @if(session()->has('success'))
+                <span class="text-danger">{{session()->get('success')}}</span><br>
+                @endif
             @csrf
             <label for="phone" class="font-weight-bold">Phone no :</label>
             <input type="number" name="phone" class="form-control" placeholder="Enter your phone number">

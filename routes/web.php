@@ -23,6 +23,9 @@ Route::get('login',function(){
 Route::get('register',function(){
     return view('register');
 });
+//home when loggedin
+Route::get('/', [CarsController::class, 'index']); 
+
 Route::get('brands', [CarsController::class, 'brand']);
 Route::get('types', [CarsController::class, 'Types']);
 Route::get('listings', [CarsController::class, 'Listing']);
@@ -34,6 +37,7 @@ Route::get('profile', [CarsController::class, 'Profile']);
 Route::get('admin/login', [CarsController::class, 'Login']);
 //register
 Route::get('admin/register', [CarsController::class, 'register']);
-
+//logout
+Route::get('logout',[CarsController::class, 'Logout']);
 
 
