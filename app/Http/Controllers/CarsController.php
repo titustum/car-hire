@@ -21,16 +21,32 @@ class CarsController extends Controller
         return view('listings');
     }
     public function Clients(){
-        return view('clients');
+        if(Auth::check()){
+            return view('/admin/clients');
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     public function Setting(){
-        return view('settings');
+        if(Auth::check()){
+            return view('setting');
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     public function Profile(){
-        return view('profile');
+        if(Auth::check()){
+            return view('profile');
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     public function Transaction(){
-        return view('transactions');
+        if(Auth::check()){
+            return view('/admin/transactions');
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     //
     public function Login(Request $request)
@@ -42,7 +58,7 @@ class CarsController extends Controller
    
         $credentials = $request->only('phone', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/')
+            return redirect()->intended('/admin/index')
                         ->withSuccess('Signed in');
         }
   
@@ -66,7 +82,7 @@ class CarsController extends Controller
 
         ]);
         if($request->re_password != $request->password){
-            return redirect('register')->with('error','The password doesnt match');
+            return redirect('/admin/register')->with('error','The password doesnt match');
         }else{
            
         $data = $request->all();
@@ -81,7 +97,7 @@ class CarsController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect("/")->withSuccess('You have signed-in');
+        return redirect("/admin/index")->withSuccess('You have signed-in');
         }
     }
 
@@ -99,8 +115,12 @@ class CarsController extends Controller
     
     public function index()
     {
+        //was like this
+        // if(Auth::check()){
+        //     return view('/');
+        // }
         if(Auth::check()){
-            return view('/');
+            return view('/admin/index');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access..Login first');

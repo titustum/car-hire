@@ -14,7 +14,7 @@
     <style>
         .card-header{
             height: 20vh;
-            background: url(images/car.jpg);
+            background: url(../images/car.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;

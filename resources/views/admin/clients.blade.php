@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
-        <img src="images/car.jpg" class="img-fluid" width="150px"  style="">
+        <img src="../images/car.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav mx-5">
                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/')}}" style="font-size: 20px">HOME</a>
+                    <a class="nav-link" href="{{url('/admin/index')}}" style="font-size: 20px">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('brands')}}" style="font-size: 20px">Brands/Models</a>
@@ -34,10 +34,10 @@
                     <a class="nav-link" href="{{url('listings')}}" style="font-size: 20px">Car Listing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('transactions')}}" style="font-size: 20px">Transaction</a>
+                    <a class="nav-link" href="{{url('/admin/transactions')}}" style="font-size: 20px">Transaction</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('clients')}}" style="font-size: 20px">Clients</a>
+                    <a class="nav-link" href="{{url('/admin/clients')}}" style="font-size: 20px">Clients</a>
                 </li>
             </ul>
                 <div class="dropdown">
@@ -51,21 +51,23 @@
 </div>
 </nav>
 <div class="container-fluid">
-    <h4 class="text-center font-weight-bold">Transaction Records</h4>
+    <h4 class="text-center font-weight-bold">Active Clients</h4>
     <div class="table-responsive">
         <table class="table table-dark table-bordered table-hover" id="sample">
             <thead>
                 <tr>
                     <td>#</td>
-                    <td>Transaction Id</td>
-                    <td>Transaction Code</td>
-                    <td>Transaction Method</td>
-                    <td>Amount</td>
-                    <td>Transaction Time</td>
+                    <td>Client Id</td>
+                    <td>First Name</td>
+                    <td>Second Name</td>
+                    <td>ID No. </td>
+                    <td>Tel No.</td>
+                    <td>Status</td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

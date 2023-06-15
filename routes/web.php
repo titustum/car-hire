@@ -23,14 +23,21 @@ Route::get('login',function(){
 Route::get('register',function(){
     return view('register');
 });
+//clients home page
+Route::get('/admin/index',function(){
+    return view('/admin/index');
+});
 //home when loggedin
-Route::get('/', [CarsController::class, 'index']); 
+//changed from
+// Route::get('/', [CarsController::class, 'index']); 
+// to
+Route::get('admin/index', [CarsController::class, 'index']); 
 
 Route::get('brands', [CarsController::class, 'brand']);
 Route::get('types', [CarsController::class, 'Types']);
 Route::get('listings', [CarsController::class, 'Listing']);
-Route::get('transactions', [CarsController::class, 'Transaction']);
-Route::get('clients', [CarsController::class, 'Clients']);
+Route::get('admin/transactions', [CarsController::class, 'Transaction']);
+Route::get('admin/clients', [CarsController::class, 'Clients']);
 Route::get('setting', [CarsController::class, 'Setting']);
 Route::get('profile', [CarsController::class, 'Profile']);
 //login

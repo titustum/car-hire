@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut-icon" href="{{asset('images/car.jpg')}}" type="text/css">
+    <link rel="shortcut-icon" href="images/car.jpg" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/DataTables-1.13.4/css/jquery.dataTables.css')}}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -11,24 +11,11 @@
 <script type="text/javascript" src="{{asset('DataTables/DataTables-1.13.4/js/jquery.dataTables.js')}}"></script>
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CAR::HIRE</title>
-    <style>
-        header{
-            background:url(images/car.jpg);
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        </style>
+    <title>Clients::index::page</title>
 </head>
-<body >
-    {{-- <header>
-        <div id="logo" class="col-md-12">
-            
-        </div>
-        <h1 class="head text-center font-weight-bold text-dark" st> 4X4s</h1>
-    </header> --}}
+<body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
         <img src="images/car.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
@@ -38,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav mx-5">
                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/')}}" style="font-size: 20px">HOME</a>
+                    <a class="nav-link" href="{{url('index')}}" style="font-size: 20px">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('brands')}}" style="font-size: 20px">Brands/Models</a>
@@ -50,165 +37,159 @@
                     <a class="nav-link" href="{{url('listings')}}" style="font-size: 20px">Car Listing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('transactions')}}" style="font-size: 20px">Transaction</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('clients')}}" style="font-size: 20px">Clients</a>
+                    <a class="nav-link" href="{{url('bookings')}}" style="font-size: 20px">My Bookings</a>
                 </li>
             </ul>
-                <div class="dropdown">
-            <a class="font-weight-bold dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="text-decoration:none;color:teal">  <i class="fa fa-user" style="color:white;font-size:20px"></i></a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{{url('settings')}}">Settings</a>
-    <a class="dropdown-item" href="{{url('profile')}}">Profile</a>
-    <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
-  </div>
-</div>
 </div>
 </nav>
-<div class="container" >
-    <h3 class="font-weight-bold">Dashboard</h3>
-    <div class="row contents">
-        <div class="col-md-3 mb-4">
-        <div class="card" style="border-top-right-radius:2em;border-top-left-radius:2em;">
-            <div class="card-body" style="background-color:rgb(4, 46, 63);border-top-right-radius:2em;border-top-left-radius:2em;">
-                <div class="row justify-content-between">
-                    <div>
-                        <i class="text-white fa-solid fa-users"></i>
-                    </div>
-                    <div class="column">
-<p class="text-light font-weight-bold">Total Clients</p>
-<p class="text-light font-weight-bold"> 10</p>
-                    </div>
+<div class="container">
+    <div id="carouselId" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselId" data-slide-to="1"></li>
+            <li data-target="#carouselId" data-slide-to="2"></li>
+            <li data-target="#carouselId" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img class="w-100 img-fluid" style="height: 60%" src="images/cruiser.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="text-dark font-weight-bold">4X4s</h3>
+                    <p class="btn btn-link">View more</p>
                 </div>
-                
             </div>
-            <div class="card-footer">
-                <p>Today :</p>
+            <div class="carousel-item">
+                <img class="w-100" src="images/saloon.jpg" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="text-dark font-weight-bold">Saloon cars</h3>
+                    <p class="btn btn-link">View more</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="images/truck.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="text-dark font-weight-bold">Trucks</h3>
+                    <p class="btn btn-link">View more</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="images/bike.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="text-dark font-weight-bold">Bikes</h3>
+                    <p class="btn btn-link">View more</p>
+                </div>
             </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="container-fluid">
+    <h4 class="font-weight-bold text-center" style="text-decoration: underline">CATEGORIES</h4>
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <a href="{{url('4X4s')}}" class="" style="font-size: 17px;text-decoration:none">4 X 4 s</a>
+            <a href="{{url('trucks')}}" style="font-size: 17px;text-decoration:none">Trucks</a>
+            <a href="{{url('saloons')}}" style="font-size: 17px;text-decoration:none">Saloons</a>
+            <a href="{{url('bikes')}}" style="font-size: 17px;text-decoration:none">Bikes</a>
         </div>
-        <div class="col-md-3">
-            <div class="card" style="border-top-right-radius:2em;border-top-left-radius:2em;">
-                <div class="card-body" style="background-color: brown;border-top-right-radius:2em;border-top-left-radius:2em;">
-                    <div class="row justify-content-between">
-                        <div>
-                            <i class="text-white fa-solid fa-car"></i>
-                        </div>
-                        <div class="column">
-<p class="text-light font-weight-bold">Total Rented cars</p>
-<p class="text-light font-weight-bold"> 5</p>
-                        </div>
-                    </div>
-                
-                </div>
-                <div class="card-footer">
-                    <p>Today :</p>
-                </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+                {{-- <div class="card-header"> --}}
+                    <img src="images/cruiser.jpg" class="img-fluid" alt="">
+                {{-- </div> --}}
+              <div class="card-body">
+                <h3 class="card-title">Landcruiser L-300</h3>
+                <p class="card-text">Price per Hr : 15$</p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary">BOOK NOW</button>
             </div>
             </div>
-            <div class="col-md-3">
-                <div class="card" style="border-top-right-radius:2em;border-top-left-radius:2em;">
-                    <div class="card-body" style="background-color: gray;border-top-right-radius:2em;border-top-left-radius:2em;">
-                        <div class="row justify-content-between">
-                            <div>
-                                <i class="text-white fa-solid fa-car" style="font-size: 20pxx"></i>
-                            </div>
-                            <div class="column">
-                            <p class="text-light font-weight-bold">Total Cars</p>
-<p class="text-light font-weight-bold"> 20</p>
-                            </div>
-                        </div>
-                
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card" style="border-top-right-radius:2em;border-top-left-radius:2em;">
-                        <div class="card-body" style="background-color: rgb(4, 52, 4);border-top-right-radius:2em;border-top-left-radius:2em;">
-                            <div class="row justify-content-between">
-                                <div>
-                                    <i class="text-white fa-solid fa-sack-dollar"></i>
-                                </div>
-                                <div class="column">
-<p class="text-light font-weight-bold">Total Transaction</p>
-<p class="text-light font-weight-bold"> 50</p>
-                                </div>
-                            </div>
-                
-                        </div>
-                        <div class="card-footer">
-                            <p>Today :</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" style="border-top-right-radius:2em;border-top-left-radius:2em;">
-                            <div class="card-body" style="background-color: rgb(69, 13, 13);border-top-right-radius:2em;border-top-left-radius:2em;">
-                                <div class="row justify-content-between">
-                                    <div>
-                                        <i class="text-white fa-solid fa-file-lines"></i>
-                                    </div>
-                                    <div class="column">
-<p class="text-light font-weight-bold">Reports</p>
-<p class="text-light font-weight-bold"> 112</p>
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-footer">
-                                <p>Today : 5</p>
-                            </div>
-                        </div>
-                        </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+                {{-- <div class="card-header"> --}}
+                    <img src="images/car.jpg" class="img-fluid" height="100px" style="height: 50%">
+                {{-- </div> --}}
+              <div class="card-body">
+                <h3 class="card-title">Landcruiser 79 series</h3>
+                <p class="card-text">Price per Hr :15$</p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary">BOOK NOW</button>
+            </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+                {{-- <div class="card-header"> --}}
+                    <img src="images/nissan.jpg" class="img-fluid" alt="">
+                {{-- </div> --}}
+              <div class="card-body">
+                <h3 class="card-title">Nissan Y62</h3>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green">$</span></p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary">BOOK NOW</button>
+            </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+                {{-- <div class="card-header"> --}}
+                    <img src="images/gq.jpg" class="img-fluid" alt="">
+                {{-- </div> --}}
+              <div class="card-body">
+                <h3 class="card-title">Nissan GQ Patrol</h3>
+                <p class="card-text">Price per Hr :15$</p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary">BOOK NOW</button>
+            </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+                {{-- <div class="card-header"> --}}
+                    <img src="images/isuzu.jpg" class="img-fluid" alt="">
+                {{-- </div> --}}
+              <div class="card-body">
+                <h3 class="card-title">Isuzu D-Max</h3>
+                <p class="card-text">Price per Hr :15$</p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary">BOOK NOW</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </div>
-<div class="container mt-5">
-    <h4 class="h4">Recent Car Bookings</h4>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="sample">
-            <thead>
-                <tr>
-                    <th class="text-center font-weight-bold">BOOKING-CODE</th>
-                    <th class="text-center font-weight-bold">CLIENT</th>
-                    <th class="text-center font-weight-bold">PHONE</th>
-                    <th class="text-center font-weight-bold">CAR-TYPE</th>
-                    <th class="text-center font-weight-bold">STATUS</th>
-                    <th class="text-center font-weight-bold">DATE-FROM</th>
-                    <th class="text-center font-weight-bold">DATE-TO</th>
-                    <th class="text-center font-weight-bold">AMOUNT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container-fluid">
+    <h4 class="text-center font-weight-bold" style="text-decoration: underline;">About Us</h4>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+            <img src="images/nissan.jpg" style="float: left" class="img-fluid" alt="about_us">
+    </div>
+        </div>
+    <div class="content text-center col-md-7">
+        <p class="text-center mt-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores ea quod repellat. 
+            Consectetur reprehenderit quibusdam quidem optio ad, accusamus voluptates ratione! Quod 
+            beatae sapiente magni architecto recusandae, accusamus enim!</p>
     </div>
 </div>
-
-
-    
+</div>
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('bootstrap/popper/popper.min.js')}}"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{asset('DataTables/DataTables-1.13.4/js/jquery.dataTables.js')}}"></script>
-    <script>
-    jQuery(document).ready(function($) {
-        $('#sample').DataTable();
-    } );
-    </script>
 </html>
