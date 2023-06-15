@@ -99,21 +99,24 @@
             <a href="{{url('saloons')}}" style="font-size: 17px;text-decoration:none">Saloons</a>
             <a href="{{url('bikes')}}" style="font-size: 17px;text-decoration:none">Bikes</a>
         </div>
+        
         <div class="row">
+            @foreach ($cars as $item)
           <div class="col-md-3">
             <div class="card">
                 {{-- <div class="card-header"> --}}
                     <img src="images/cruiser.jpg" class="img-fluid" alt="">
                 {{-- </div> --}}
               <div class="card-body">
-                <h3 class="card-title">Landcruiser L-300</h3>
+                <h3 class="card-title">{{$item->car_name}}</h3>
                 <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-primary">BOOK NOW</button>
+                <a href="{{url('bookings/id')}}" class="btn btn-primary">BOOK NOW</a>
             </div>
             </div>
           </div>
+          @endforeach
           <div class="col-md-3">
             <div class="card">
                 {{-- <div class="card-header"> --}}
@@ -184,9 +187,54 @@
     <div class="content text-center col-md-7">
         <p class="text-center mt-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores ea quod repellat. 
             Consectetur reprehenderit quibusdam quidem optio ad, accusamus voluptates ratione! Quod 
-            beatae sapiente magni architecto recusandae, accusamus enim!</p>
+            beatae sapiente magni architecto recusandae, accusamus enim!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores ea quod repellat. 
+            Consectetur reprehenderit quibusdam quidem optio ad, accusamus voluptates ratione! Quod 
+            beatae sapiente magni architecto recusandae, accusamus enim!
+        </p>
     </div>
 </div>
+</div>
+<div class="container-fluid" style="background-color:rgb(76, 79, 79);border-top-left-radius: 2em;border-top-right-radius:2em">
+    <div style="border-bottom: .1px solid black">
+    <div class="row" style="">
+        
+        <div class="column col-md-3">
+            <h4 class="text-white">SIMPSONS HIRE</h4>
+            <p style="color: rgb(196, 190, 12)">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum dolorum,
+                 illum rem odio vero quidem nemo officiis sed atque quisquam deserunt 
+                 reiciendis sapiente velit cumque sint unde quaerat, illo eligendi?</p>
+        </div>
+        <div class="column col-md-3">
+            <h4 class="text-white">PRODUCTS</h4>
+            <p><a href="{{url('luxury')}}">Luxurious</a></p>
+            <p><a href="{{url('power')}}">Power</a></p>
+            <p><a href="{{url('fuel-economy')}}"> Fuel economy</a></p>
+            <p> <a href="{{url('pocket-friendly')}}">Pocket friendly</a></p>
+        </div>
+        <div class="column col-md-3">
+            <h4 class="text-white">LINKS</h4>
+            <p>My Bookings</p>
+            <p>Talk to us</p>
+            <p>Faqs</p>
+            <p>Help</p>
+        </div>
+        <div class="column col-md-3">
+            <h4 class="text-white">CONTACTS</h4>
+            <p>Location</p>
+            <p>simpsonshire@gmail.com</p>
+            <p>+254700000000</p>
+            <p>+10808988777</p>
+        </div>
+        </div>
+    </div>
+    <div class="row justify-content-between mx-2">
+        <span>&copy Copyrights {{Date('Y')}} Dantech.dev.</span>
+        <span><i class="fa fa-facebook"></i></span>
+        <span><i class="fa fa-twitter"></i></span>
+        <span><i class="fa fa-linkedin"></i></span>
+        <span><i class="fa fa-gmail"></i></span>
+    </div>
 </div>
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>

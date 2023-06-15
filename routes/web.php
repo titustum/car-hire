@@ -47,4 +47,17 @@ Route::get('admin/register', [CarsController::class, 'register']);
 //logout
 Route::get('logout',[CarsController::class, 'Logout']);
 
+//4x4 contents
+Route::get('4X4s',[CarsController::class, 'power']);
+//saloon contents
+Route::get('saloons',[CarsController::class, 'saloon']);
+//trucks contents
+Route::get('trucks',[CarsController::class, 'truck']);
+//saloon contents
+Route::get('bikes',[CarsController::class, 'bike']);
+//proceed to bookings page
+Route::get('bookings/id',[CarsController::class, 'bookings']);
+
+
+
 

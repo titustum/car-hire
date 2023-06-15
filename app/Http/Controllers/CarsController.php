@@ -2,15 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class CarsController extends Controller
 {
     //
+    public function power(Request $request){
+        // $cars = Car::where('car_type', '4X4');
+        $cars = DB::select("SELECT * FROM cars WHERE car_type = '4X4'");
+        return view('index',compact('cars'));
+    }
+    public function saloon(Request $request){
+        // $cars = Car::where('car_type', '4X4');
+        $cars = DB::select("SELECT * FROM cars WHERE car_type = 'saloon'");
+        return view('index',compact('cars'));
+    }
+    public function truck(Request $request){
+        // $cars = Car::where('car_type', '4X4');
+        $cars = DB::select("SELECT * FROM cars WHERE car_type = 'truck'");
+        return view('index',compact('cars'));
+    }
+    public function bike(Request $request){
+        // $cars = Car::where('car_type', '4X4');
+        $cars = DB::select("SELECT * FROM cars WHERE car_type = 'bike'");
+        return view('index',compact('cars'));
+    }
+    public function bookings(){
+        return view('hire');
+    }
     public function Types(){
         return view('types');
     }
