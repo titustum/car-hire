@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarsController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $cars = DB::select("SELECT * FROM cars WHERE car_type = '4X4'");
+        return view('index',compact('cars'));
+    // return view('index');
 });
 Route::get('login',function(){
     return view('login');
