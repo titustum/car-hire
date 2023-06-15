@@ -66,11 +66,18 @@
 	background-color: #55b776;
 	z-index: 1;
 }
+body{
+    background-attachment: fixed;
+    background: url(../images/nissan.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
-        <img src="images/cruiser.jpg" class="img-fluid" width="150px"  style="">
+        <img src="../images/cruiser.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -78,7 +85,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav mx-5">
                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('index')}}" style="font-size: 20px">HOME</a>
+                    <a class="nav-link" href="{{url('/')}}" style="font-size: 20px">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('brands')}}" style="font-size: 20px">Brands/Models</a>
@@ -113,18 +120,22 @@
                 <thead>
                     <tr>
                         <th>Car Image</th>
+                        <th>Car Brand</th>
                         <th>Car Name</th>
                         <th>Car Price</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($cars as $item)
                     <tr>
-                        <td scope="row"><img src="images/nissan.jpg" class="img-fluid" alt=""></td>
-                        <td>Landcruiser</td>
+                        <td scope="row"><img src="../images/nissan.jpg" class="img-fluid" height="100px" width="100px" alt=""></td>
+                        <td>{{$item->car_brand}}</td>
+                        <td>{{$item->car_name}}</td>
                         <td>32,000</td>
-                        <td><a href="{{url('proceed')}}" class="btn btn-success">PROCEED</a></td>
+                        <td><a href="{{url('proceed')}}" class="btn btn-success mt-3 mx-5">PROCEED</a></td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

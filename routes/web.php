@@ -36,8 +36,8 @@ Route::get('admin/index', [CarsController::class, 'index']);
 Route::get('brands', [CarsController::class, 'brand']);
 Route::get('types', [CarsController::class, 'Types']);
 Route::get('listings', [CarsController::class, 'Listing']);
-Route::get('admin/transactions', [CarsController::class, 'Transaction']);
-Route::get('admin/clients', [CarsController::class, 'Clients']);
+Route::get('admin/transactions', [CarsController::class, 'Transaction'])->middleware(App\Http\Middleware\AuthCheck::class);
+Route::get('admin/clients', [CarsController::class, 'Clients'])->middleware(App\Http\Middleware\AuthCheck::class);
 Route::get('setting', [CarsController::class, 'Setting']);
 Route::get('profile', [CarsController::class, 'Profile']);
 //login
@@ -56,7 +56,7 @@ Route::get('trucks',[CarsController::class, 'truck']);
 //saloon contents
 Route::get('bikes',[CarsController::class, 'bike']);
 //proceed to bookings page
-Route::get('bookings/id',[CarsController::class, 'bookings']);
+Route::get('bookings/{id}',[CarsController::class, 'bookings']);
 
 
 

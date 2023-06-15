@@ -33,8 +33,10 @@ class CarsController extends Controller
         $cars = DB::select("SELECT * FROM cars WHERE car_type = 'bike'");
         return view('index',compact('cars'));
     }
-    public function bookings(){
-        return view('hire');
+    public function bookings(Request $request, $id){
+        // $cars = Car::findorFail($id);
+        $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
+        return view('hire',compact('cars'));
     }
     public function Types(){
         return view('types');
@@ -46,11 +48,7 @@ class CarsController extends Controller
         return view('listings');
     }
     public function Clients(){
-        if(Auth::check()){
             return view('/admin/clients');
-        }
-  
-        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     public function Setting(){
         if(Auth::check()){
@@ -67,11 +65,7 @@ class CarsController extends Controller
         return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     public function Transaction(){
-        if(Auth::check()){
             return view('/admin/transactions');
-        }
-  
-        return redirect("login")->withSuccess('You are not allowed to access..Login first');
     }
     //
     public function Login(Request $request)
