@@ -107,7 +107,7 @@
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Landcruiser L-300</h3>
-                <p class="card-text">Price per Hr : 15$</p>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-primary">BOOK NOW</button>
@@ -121,7 +121,7 @@
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Landcruiser 79 series</h3>
-                <p class="card-text">Price per Hr :15$</p>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-primary">BOOK NOW</button>
@@ -135,7 +135,7 @@
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Nissan Y62</h3>
-                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green">$</span></p>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-primary">BOOK NOW</button>
@@ -149,7 +149,7 @@
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Nissan GQ Patrol</h3>
-                <p class="card-text">Price per Hr :15$</p>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-primary">BOOK NOW</button>
@@ -163,7 +163,7 @@
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Isuzu D-Max</h3>
-                <p class="card-text">Price per Hr :15$</p>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-primary">BOOK NOW</button>
