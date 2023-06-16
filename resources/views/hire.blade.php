@@ -108,8 +108,8 @@ body{
 		<ul class="progressbar">
           <li class="active">Car Details</li>
           <li>Personal details</li>
-          <li>Pay</li>
           <li>Summary</li>
+          <li>Pay</li>
         </ul>
 		</div>
 	</div>
