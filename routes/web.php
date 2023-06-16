@@ -61,19 +61,12 @@ Route::get('bikes',[CarsController::class, 'bike']);
 //proceed to bookings page
 Route::get('bookings/{id}',[CarsController::class, 'bookings']);
 //paersonal details page
-Route::get('proceed/personal-details',function(){
-    $details = session()->get('details',[]);
-    $details = [
-        "car_image"=>'image',
-        "car_brand"=>'Toyota',
-        "car_name"=>'Landcruiser L-300',
-        "price"=>32000,
-    ];
+Route::get('proceed/personal-details/{id}',[CarsController::class, 'details']);
+//capture clients details
+Route::post('user/register/{id}',[CarsController::class, 'client_register']);
 
-    session()->put('details',$details);
-    return view('personal_details');
+Route::get('summary',function(){
+    return view('summary');
 });
-
-
-
-
+//my bookings page
+Route::get('bookings',[CarsController::class, 'my_bookings']);

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../images/car.jpg" type="text/css">
+    <link rel="shortcut icon" href="../../images/car.jpg" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/DataTables-1.13.4/css/jquery.dataTables.css')}}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -70,7 +70,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
-        <img src="../images/car.jpg" class="img-fluid" width="150px"  style="">
+        <img src="../../images/car.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -113,22 +113,40 @@
         <h4 class="text-center font-weight-bold">Your Personal Details</h4>
      </div>
       <div class="card-body">
-        {{-- @if(session('details'))
-        @foreach(session('details') as $item) --}}
-       <form action="{{url('user/register')}}" method="post">
+        {{-- @if(session('details'))--}}
+        @foreach($cars as $item) 
+       <form action="{{url('user/register/'.$item->id)}}" method="post">
     @csrf
     <label for="" class="font-weight-bold">Fullname :</label>
     <input type="text" name="fullname" class="form-control" placeholder="Enter your fullname" id="" value="">
+    @if ($errors->has('fullname'))
+    <span class="text-danger">{{ $errors->first('fullname') }}</span><br>
+    @endif
     <label for="" class="font-weight-bold">Number :</label>
     <input type="number" name="phone" class="form-control" placeholder="Enter your number" id="">
+    @if ($errors->has('phone'))
+    <span class="text-danger">{{ $errors->first('phone') }}</span><br>
+    @endif
     <label for="" class="font-weight-bold">Email :</label>
     <input type="email" name="email" class="form-control" placeholder="Enter your email" id="">
+    @if ($errors->has('email'))
+    <span class="text-danger">{{ $errors->first('email') }}</span><br>
+    @endif
     <label for="" class="font-weight-bold">Location :</label>
     <input type="text" name="location" class="form-control" placeholder="Where are you from..." id="">
+    @if ($errors->has('location'))
+    <span class="text-danger">{{ $errors->first('location') }}</span><br>
+    @endif
+    <label for="" class="font-weight-bold">Booking Duration :</label>
+    <input type="number" name="days" class="form-control" placeholder="Days..." id="">
+    <span>In day(s)</span>
+    @if ($errors->has('days'))
+    <span class="text-danger">{{ $errors->first('days') }}</span><br>
+    @endif
     <input type="submit" value="S U B M I T" class="btn btn-primary form-control text-center mt-4 font-weight-bold">
     </form>
-    {{-- @endforeach
-    @endif --}}
+     @endforeach
+    {{--@endif --}}
       </div>
     </div>
 </div>

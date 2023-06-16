@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Car;
+use App\Models\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +37,17 @@ class CarsController extends Controller
     }
     public function bookings(Request $request, $id){
         // $cars = Car::findorFail($id);
+        // $id = session()->get($id,[]);
         $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
+
+        // session()->put('id',$id);
         return view('hire',compact('cars'));
+    }
+
+    //my_bookings
+    public function my_bookings(){
+        $bookings = DB::select("SELECT * FROM bookings WHERE booking_id = ''");
+        return view('bookings', compact('bookings'));
     }
     public function Types(){
         return view('types');
@@ -67,7 +78,62 @@ class CarsController extends Controller
     public function Transaction(){
             return view('/admin/transactions');
     }
-    //
+
+    public function details(Request $request,$id){
+        $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
+        return view('personal_details',compact('cars'));
+    }
+    //register clients
+
+    public function client_register(Request $request,$id){
+        $booking_id = 'SIMP'. random_int('10000','99999');
+
+         $request->validate(
+            [
+            "fullname"=>'Required',
+            "phone"=>'required|unique:clients,phone',
+            "email"=>'required|unique:clients,email',
+            "location"=>'required',
+            "days"=>'required',
+         ],
+         [
+            "fullname.required"=>"Fill your name",
+            "phone.required"=>"Enter your number",
+            "email.required"=>"Fill your email address",
+            "location.required"=>"Fill your location",
+            "days.required"=>"Fill the duration of hire",
+         ]);
+          $client=new Client;
+          $client->booking_id = $booking_id;
+          $client->fullname = $request->fullname;
+          $client->phone = $request->phone;
+          $client->email = $request->email;
+          $client->location = $request->location;
+          $client->days = $request->days .'day(s)';
+          $client->save();
+
+         date_default_timezone_set('Africa/Nairobi');
+         $booked_time=strtotime("current");
+         $booked_time = date('Y-m-d  H:i:sa');
+
+         $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
+         foreach($cars as $item){
+            $booking = new Booking;
+            $booking->booking_id = $booking_id;
+            $booking->fullname = $request->fullname;
+            $booking->phone = $request->phone;
+            $booking->car_name = $item->car_name;
+            $booking->car_price = '2000';
+            $booking->hire_duration = $request->days;
+            $booking->total_price = $request->days * 2000;
+            $booking->status = "Active";
+            // $booking->booked_at = $booked_time;
+            $booking->save();
+
+         }
+         return redirect("summary")->with('message', 'User details recorded.');
+
+    }
     public function Login(Request $request)
     {
         $request->validate([
