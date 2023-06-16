@@ -48,12 +48,11 @@
         <h4 class="text-center font-weight-bold">Your Personal Details</h4>
      </div>
       <div class="card-body">
-        @if(session('details'))
-        @foreach(session('details') as $item)
+        {{-- @if(session('details'))
+        @foreach(session('details') as $item) --}}
        <form action="{{url('user/register')}}" method="post">
     @csrf
     <label for="" class="font-weight-bold">Fullname :</label>
-    <p>{{$item->car_type}}</p>
     <input type="text" name="fullname" class="form-control" placeholder="Enter your fullname" id="" value="">
     <label for="" class="font-weight-bold">Number :</label>
     <input type="number" name="phone" class="form-control" placeholder="Enter your number" id="">
@@ -61,10 +60,10 @@
     <input type="email" name="email" class="form-control" placeholder="Enter your email" id="">
     <label for="" class="font-weight-bold">Location :</label>
     <input type="text" name="location" class="form-control" placeholder="Where are you from..." id="">
-    <input type="submit" value="SUBMIT" class="btn btn-primary">
+    <input type="submit" value="S U B M I T" class="btn btn-primary form-control text-center mt-4 font-weight-bold">
     </form>
-    @endforeach
-    @endif
+    {{-- @endforeach
+    @endif --}}
       </div>
     </div>
 </div>
