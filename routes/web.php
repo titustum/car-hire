@@ -60,6 +60,19 @@ Route::get('trucks',[CarsController::class, 'truck']);
 Route::get('bikes',[CarsController::class, 'bike']);
 //proceed to bookings page
 Route::get('bookings/{id}',[CarsController::class, 'bookings']);
+//paersonal details page
+Route::get('proceed/personal-details',function(){
+    $details = session()->get('details',[]);
+    $details = [
+        "car_image"=>'image',
+        "car_brand"=>'Toyota',
+        "car_name"=>'Landcruiser L-300',
+        "price"=>32000,
+    ];
+
+    session()->put('details',$details);
+    return view('personal_details');
+});
 
 
 

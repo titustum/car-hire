@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut-icon" href="images/car.jpg" type="text/css">
+    <link rel="shortcut icon" href="../images/car.jpg" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/DataTables-1.13.4/css/jquery.dataTables.css')}}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -133,7 +133,7 @@ body{
                         <td>{{$item->car_brand}}</td>
                         <td>{{$item->car_name}}</td>
                         <td>32,000</td>
-                        <td><a href="{{url('proceed')}}" class="btn btn-success mt-3 mx-5">PROCEED</a></td>
+                        <td><a href="{{url('proceed/personal-details')}}" class="btn btn-success mt-3 mx-5">PROCEED</a></td>
                     </tr>
                     @endforeach
                 </tbody>
