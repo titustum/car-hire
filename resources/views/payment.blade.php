@@ -70,7 +70,7 @@ z-index: 1;
 </style>
 <body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
-        <img src="images/car.jpg" class="img-fluid" width="150px"  style="">
+        <img src="../../images/car.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -113,12 +113,12 @@ z-index: 1;
         <h4 class="text-center font-weight-bold">SELECT YOUR PAYMENT METHOD</h4>
     </div>
     <div class="card-body">
-        <form method="post" action="">
+        <form method="post" action="{{'complete/payment'}}">
             @csrf
             @if(session('data'))
             @foreach(session('data') as $id =>$details)
             <label class="font-weight-bold">Phone :</label>
-            <input type="number" name="phone" class="form-control" id="" value="{{$details['phone']}}" readonly>
+            <input type="number" name="phone" class="form-control" id="" value="{{$details['phone']}}" >
             @endforeach
             @endif
             <label class="font-weight-bold">Select platform :</label>

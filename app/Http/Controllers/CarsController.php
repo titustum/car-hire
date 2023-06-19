@@ -150,6 +150,10 @@ class CarsController extends Controller
         return view('payment');
 
     }
+    //pay
+    public function pay(){
+        
+    }
 
 
     //register clients
