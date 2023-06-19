@@ -83,6 +83,50 @@ class CarsController extends Controller
         $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
         return view('personal_details',compact('cars'));
     }
+    //capture details
+    public function client_gister(Request $request, $id){
+        $data = session()->get('data',[]);
+        $booking_id = 'SIMP'. random_int('10000','99999');
+
+        $request->validate(
+           [
+           "fullname"=>'Required',
+           "phone"=>'required|unique:clients,phone',
+           "email"=>'required|unique:clients,email',
+           "location"=>'required',
+           "days"=>'required',
+        ],
+        [
+           "fullname.required"=>"Fill your name",
+           "phone.required"=>"Enter your number",
+           "email.required"=>"Fill your email address",
+           "location.required"=>"Fill your location",
+           "days.required"=>"Fill the duration of hire",
+        ]);
+        $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
+        foreach($cars as $item){
+            $data=[
+                $id=>[
+                    "booking_id"=>$booking_id,
+                    "fullname"=>$request->fullname,
+                    "phone"=>$request->phone,
+                    "email"=>$request->email,
+                    "location"=>$request->location,
+                    "days"=>$request->days,
+                    "car_name"=>$item->car_name,
+                    "car_price"=>'2000',
+                    "hire_duration"=>$request->days,
+                    "total_price"=>$request->days * 2000,
+                    "booking_status"=>'Active'
+
+                ]
+                ];
+            
+        }
+        session()->put('data',$data);
+        return redirect('summary');
+
+    }
     //register clients
 
     public function client_register(Request $request,$id){

@@ -63,7 +63,7 @@ Route::get('bookings/{id}',[CarsController::class, 'bookings']);
 //paersonal details page
 Route::get('proceed/personal-details/{id}',[CarsController::class, 'details']);
 //capture clients details
-Route::post('user/register/{id}',[CarsController::class, 'client_register']);
+Route::post('user/register/{id}',[CarsController::class, 'client_gister']);
 
 Route::get('summary',function(){
     return view('summary');
