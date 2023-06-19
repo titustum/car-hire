@@ -105,30 +105,54 @@ class CarsController extends Controller
         ]);
         $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
         foreach($cars as $item){
-            $data=[
-                $id=>[
-                    "booking_id"=>$booking_id,
-                    "fullname"=>$request->fullname,
-                    "phone"=>$request->phone,
-                    "email"=>$request->email,
-                    "location"=>$request->location,
-                    "days"=>$request->days,
-                    "car_name"=>$item->car_name,
-                    "car_price"=>'2000',
-                    "hire_duration"=>$request->days,
-                    "total_price"=>$request->days * 2000,
-                    "booking_status"=>'Active'
-
-                ]
-                ];
+            
             
         }
+        $data=[
+            $id=>[
+                "booking_id"=>$booking_id,
+                "fullname"=>$request->fullname,
+                "phone"=>$request->phone,
+                "email"=>$request->email,
+                "location"=>$request->location,
+                "days"=>$request->days,
+                "car_name"=>$item->car_name,
+                "car_price"=>'2000',
+                "hire_duration"=>$request->days,
+                "total_price"=>$request->days * 2000,
+                "booking_status"=>'Active'
+
+            ]
+            ];
         session()->put('data',$data);
-        return redirect('summary');
+        return view('summary');
 
     }
-    //register clients
+    //payment
+    public function payment(Request $request, $id){
+        $data=[
+            $id=>[
+                "booking_id"=>$request->booking_id,
+                "fullname"=>$request->fullname,
+                "phone"=>$request->phone,
+                "email"=>$request->email,
+                "location"=>$request->location,
+                "days"=>$request->days,
+                "car_name"=>$request->car_name,
+                "car_price"=>'2000',
+                "hire_duration"=>$request->days,
+                "total_price"=>$request->days * 2000,
+                "booking_status"=>'Active'
 
+            ]
+            ];
+        session()->put('data',$data);
+        return view('payment');
+
+    }
+
+
+    //register clients
     public function client_register(Request $request,$id){
         $booking_id = 'SIMP'. random_int('10000','99999');
 

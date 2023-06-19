@@ -102,84 +102,38 @@ z-index: 1;
                   <li class="active">Car Details</li>
                   <li class="active">Personal details</li>
                   <li class="active">Summary</li>
-                  <li>Pay</li>
+                  <li class="active">Pay</li>
         </ul>
 		</div>
 	</div>
 </div>
-@if(session('data'))
-@foreach(session('data') as $id => $details)
-<div class="container">
+<div class="container col-md-5">
     <div class="card">
-<form action="{{url('proceed/payment/'.$id)}}" method="post">
-    @csrf
     <div class="card-header">
-    <label class="font-weight-bold">Car Image :</label>
-<img src="images/car.jpg" alt="">
+        <h4 class="text-center font-weight-bold">SELECT YOUR PAYMENT METHOD</h4>
     </div>
-<div class="card-body">
-    <div class="row">
-        <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Booking id :</label>
-    <input type="text" name="booking_id" class="form-control" value="{{$details['booking_id']}}">
-        </div>
-        <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Car name :</label>
-    <input type="text" name="car_name" class="form-control " value="{{$details['car_name']}}">
-        </div>
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Fullname :</label>
-    <input type="text" name="fullname" class="form-control " value="{{$details['fullname']}}">
+    <div class="card-body">
+        <form method="post" action="">
+            @csrf
+            @if(session('data'))
+            @foreach(session('data') as $id =>$details)
+            <label class="font-weight-bold">Phone :</label>
+            <input type="number" name="phone" class="form-control" id="" value="{{$details['phone']}}" readonly>
+            @endforeach
+            @endif
+            <label class="font-weight-bold">Select platform :</label>
+            <select name="method" class="form-control" id="">
+                <option value="">--Choose a plartform--</option>
+                <option value="">M-Pesa</option>
+                <option value="">Cash at Office</option>
+                <option value="">Mobile Banking</option>
+            </select>
+            <input type="submit" value="COMPLETE" class="mt-4 form-control btn btn-primary">
+        </form>
     </div>
-    </div>
-    <div class="row">
-        <div class="column col-md-6">
-    <label for="" class="font-weight-bold"> Email :</label>
-    <input type="text" name="email" class="form-control" value="{{$details['email']}}">
-        </div>
-    <div class="column col-md-6">
-    <label for="">Phone :</label>
-    <input type="text" name="phone" class="form-control" value="{{$details['phone']}}">
-        </div>
-</div>
-<div class="row">
-<div class="column col-md-4">
-    <label for="" class="font-weight-bold">Car price :</label>
-    <input type="text" name="car_price" class="form-control" value="{{$details['car_price']}}">
-</div>
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Days :</label>
-    <input type="text" name="days" class="form-control" value="{{$details['days']}}">
-</div>
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Hire duration :</label>
-    <input type="text" name="hire_duration" class="form-control" value="{{$details['hire_duration']}}">
-</div>
-</div>
-<div class="row">
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Car price :</label>
-    <input type="text" name="car_price" class="form-control" value="{{$details['car_price']}}">
-    </div>
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Booking status :</label>
-    <input type="text" name="booking_status" class="form-control" value="{{$details['booking_status']}}">
-    </div>
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Total price :</label>
-    <input type="text" name="total_price" class="form-control" value="{{$details['total_price']}}">
     </div>
 </div>
-    <div class="column col-md-6">
-    <input type="submit" value="PROCEED TO PAYMENT" class="mt-4 font-weight-bold form-control btn btn-success">
-</div>
-</div>
-</div>
-</form>
-    </div>
-</div>
-@endforeach
-@endif
+
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>

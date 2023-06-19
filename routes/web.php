@@ -70,3 +70,5 @@ Route::get('summary',function(){
 });
 //my bookings page
 Route::get('bookings',[CarsController::class, 'my_bookings']);
+//payment page
+Route::post('proceed/payment/{id}',[CarsController::class, 'payment']);
