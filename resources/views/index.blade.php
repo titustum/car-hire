@@ -42,6 +42,9 @@
             </ul>
 </div>
 </nav>
+@if(session()->has('success'))
+<p class="font-weight-bold text-success">{{session()->get('success')}}</p>
+@endif
 <div class="container">
     <div id="carouselId" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

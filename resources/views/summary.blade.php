@@ -122,6 +122,8 @@ z-index: 1;
         <div class="column col-md-4">
     <label for="" class="font-weight-bold">Booking id :</label>
     <input type="text" name="booking_id" class="form-control" value="{{$details['booking_id']}}">
+    <input type="text" name="location" class="form-control" value="{{$details['location']}}" hidden>
+
         </div>
         <div class="column col-md-4">
     <label for="" class="font-weight-bold">Car name :</label>

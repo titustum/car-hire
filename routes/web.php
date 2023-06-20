@@ -73,4 +73,6 @@ Route::get('bookings',[CarsController::class, 'my_bookings']);
 //payment page
 Route::post('proceed/payment/{id}',[CarsController::class, 'payment']);
 //complete payment
-Route::get('complete/payment',[CarsController::class, 'pesa']);
+Route::post('complete/payment',[CarsController::class, 'submit']);
+//find booking
+Route::post('client/search',[CarsController::class, 'my_bookings']);

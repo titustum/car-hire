@@ -113,12 +113,12 @@ z-index: 1;
         <h4 class="text-center font-weight-bold">SELECT YOUR PAYMENT METHOD</h4>
     </div>
     <div class="card-body">
-        <form method="post" action="{{'complete/payment'}}">
+        <form method="post" action="{{url('complete/payment')}}">
             @csrf
             @if(session('data'))
             @foreach(session('data') as $id =>$details)
             <label class="font-weight-bold">Phone :</label>
-            <input type="number" name="phone" class="form-control" id="" value="{{$details['phone']}}" >
+            <input type="text" name="phone" class="form-control" id="" value="{{$details['phone']}}" >
             @endforeach
             @endif
             <label class="font-weight-bold">Select platform :</label>
@@ -128,6 +128,19 @@ z-index: 1;
                 <option value="">Cash at Office</option>
                 <option value="">Mobile Banking</option>
             </select>
+            {{-- hidden inputs for data capture --}}
+            <input type="text" name="booking_id" class="form-control" value="{{$details['booking_id']}}" hidden>
+    <input type="text" name="car_name" class="form-control " value="{{$details['car_name']}}" hidden>
+    <input type="text" name="fullname" class="form-control " value="{{$details['fullname']}}" hidden>
+    <input type="text" name="email" class="form-control" value="{{$details['email']}}" hidden>
+    <input type="text" name="location" class="form-control" value="{{$details['location']}}" hidden>
+    <input type="text" name="car_price" class="form-control" value="{{$details['car_price']}}" hidden>
+    <input type="text" name="days" class="form-control" value="{{$details['days']}}" hidden>
+    <input type="text" name="hire_duration" class="form-control" value="{{$details['hire_duration']}}" hidden>
+    <input type="text" name="car_price" class="form-control" value="{{$details['car_price']}}" hidden>
+    <input type="text" name="booking_status" class="form-control" value="{{$details['booking_status']}}" hidden>
+    <input type="text" name="total_price" class="form-control" value="{{$details['total_price']}}" hidden>
+    {{-- end of the hidden --}}
             <input type="submit" value="COMPLETE" class="mt-4 form-control btn btn-primary">
         </form>
     </div>

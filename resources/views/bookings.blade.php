@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="images/car.jpg" type="text/css">
+    <link rel="shortcut icon" href="../images/car.jpg" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/DataTables-1.13.4/css/jquery.dataTables.css')}}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -17,7 +17,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
-        <img src="images/cruiser.jpg" class="img-fluid" width="150px"  style="">
+        <img src="../images/cruiser.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,9 +42,7 @@
             </ul>
 </div>
 </nav>
-<?php 
-if (($bookings)<=0) {
-    ?>
+
 <div class="container col-md-6">
 
         <div class="card">
@@ -53,6 +51,7 @@ if (($bookings)<=0) {
             </div>
             <div class="card-body">
             <form action="{{url('client/search')}}" method="post">
+                @csrf
                 <label class="font-weight-bold">Enter the booking id :</label>
             <input type="text" name="booking_id" class="form-control" placeholder="Enter the booking id" id="">
             <input type="submit" value="LOAD SEARCH" class="font-weight-bold form-control btn btn-primary mt-2">
@@ -60,8 +59,7 @@ if (($bookings)<=0) {
             </div>
         </div>
 </div>
-<?php }else{
-?>
+
 
 <div class="container-fluid">
     <div class="table-responsive">
@@ -91,8 +89,6 @@ if (($bookings)<=0) {
        </table>
    </div>
 </div>
-<?php }
-?>
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
