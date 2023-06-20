@@ -14,6 +14,38 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class CarsController extends Controller
 {
+
+    public function pesa(){
+        $mpesa= new \Safaricom\Mpesa\Mpesa();
+        $BusinessShortCode=174379;
+        $Timestamp=date('YmdHis');
+        $PartyA='254726585782';
+        $CallBackURL='here.php';
+        $AccountReference='carhire';
+        $TransactionDesc='testing';
+        $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';//your passkey
+        $Password=base64_encode($BusinessShortCode.$LipaNaMpesaPasskey.$Timestamp);
+        $Amount=4;
+        $Remarks = "success";
+        $PartyB = 174379;
+        $TransactionType="Online";
+
+        $stkPushSimulation = $mpesa->STKPushSimulation(
+            $BusinessShortCode, 
+            $LipaNaMpesaPasskey, 
+            $Amount,
+            $PartyA,
+            $CallBackURL,
+            $AccountReference,
+            $TransactionDesc,
+            $Remarks,
+            $Amount,
+            $PartyB,
+            $TransactionType
+                );
+                dd($stkPushSimulation);
+                return redirect()->back();
+    }
     //
     public function power(Request $request){
         // $cars = Car::where('car_type', '4X4');
@@ -152,7 +184,7 @@ class CarsController extends Controller
     }
     //pay
     public function pay(){
-        
+
     }
 
 
