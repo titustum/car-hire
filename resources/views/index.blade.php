@@ -14,6 +14,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clients::index::page</title>
+    <style type="text/css">
+    .carousel{
+        height: 60vh;
+    }
+        .carousel-inner{
+            height: 100vh;
+        }
+        .carousel-item{
+            height: 100vh;
+        }
+        </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
@@ -45,45 +56,46 @@
 @if(session()->has('success'))
 <p class="font-weight-bold text-success">{{session()->get('success')}}</p>
 @endif
-<div class="container">
-    <div id="carouselId" class="carousel slide" data-ride="carousel">
+<div class="container-fluid mt-2" style="border-bottom-left-radius: .3em">
+    <div class="row">
+    <div id="carouselId" class="carousel slide col-md-6" style="height: 60vh;width:50vw" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselId" data-slide-to="0" class="active"></li>
             <li data-target="#carouselId" data-slide-to="1"></li>
             <li data-target="#carouselId" data-slide-to="2"></li>
             <li data-target="#carouselId" data-slide-to="3"></li>
         </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img class="w-100 img-fluid" style="height: 60%" src="images/cruiser.jpg" alt="First slide">
+        <div class="carousel-inner" role="listbox" style="height: 55vh;width:50vw;border-bottom-left-radius: 15%;border-top-right-radius: 15%">
+            <div class="carousel-item active" style="height: 60vh">
+                <img class="w-100 img-fluid"  src="images/cruiser.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-dark font-weight-bold">4X4s</h3>
-                    <p class="btn btn-link">View more</p>
+                    <h3 class="text-warning font-weight-bold">4X4s</h3>
+                    <a href="{{url('4X4s')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" style="height: 60vh">
                 <img class="w-100" src="images/saloon.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-dark font-weight-bold">Saloon cars</h3>
-                    <p class="btn btn-link">View more</p>
+                    <h3 class="text-warning font-weight-bold">Saloon cars</h3>
+                    <a href="{{url('saloons')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" style="height: 60vh">
                 <img class="w-100" src="images/truck.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-dark font-weight-bold">Trucks</h3>
-                    <p class="btn btn-link">View more</p>
+                    <h3 class="text-warning font-weight-bold">Trucks</h3>
+                    <a href="{{url('trucks')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img class="w-100" src="images/bike.jpg" alt="Third slide">
+            <div class="carousel-item" style="height: 60vh;width:50vw">
+                <img class="w-100" src="images/bike.jpg" style="height: 60vh;width:50vw" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-dark font-weight-bold">Bikes</h3>
-                    <p class="btn btn-link">View more</p>
+                    <h3 class="text-warning font-weight-bold">Bikes</h3>
+                    <a href="{{url('bikes')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselId" role="button"  data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
@@ -91,6 +103,10 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+    </div>
+    <div class="col-md-6">
+        <h4 class="font-weight-bold text-center" style="color: forestgreen">OTHER CARS IN OUR LIST....</h4>
+    </div>
     </div>
 </div>
 <div class="container-fluid">
@@ -105,8 +121,8 @@
         
         <div class="row">
             @foreach ($cars as $item)
-          <div class="col-md-3">
-            <div class="card">
+          <div class="col-md-3" >
+            <div class="card" >
                 {{-- <div class="card-header"> --}}
                     <img src="images/cruiser.jpg" class="img-fluid" alt="">
                 {{-- </div> --}}
