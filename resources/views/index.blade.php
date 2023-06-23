@@ -122,9 +122,9 @@
         <div class="row">
             @foreach ($cars as $item)
           <div class="col-md-3" >
-            <div class="card" >
+            <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
-                    <img src="images/cruiser.jpg" class="img-fluid" alt="">
+                    <img src="images/cruiser.jpg" class="img-fluid" alt="" style="height: 30vh">
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">{{$item->car_name}}</h3>
@@ -137,9 +137,9 @@
           </div>
           @endforeach
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
-                    <img src="images/car.jpg" class="img-fluid" height="100px" style="height: 50%">
+                    <img src="images/car.jpg" class="img-fluid" style="height: 31vh">
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Landcruiser 79 series</h3>
@@ -151,9 +151,9 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
-                    <img src="images/nissan.jpg" class="img-fluid" alt="">
+                    <img src="images/nissan.jpg" class="img-fluid" alt="" style="height:28vh">
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Nissan Y62</h3>
@@ -165,9 +165,9 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card">
+            <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
-                    <img src="images/gq.jpg" class="img-fluid" alt="">
+                    <img src="images/gq.jpg" class="img-fluid" alt="" style="height: 30vh">
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Nissan GQ Patrol</h3>
