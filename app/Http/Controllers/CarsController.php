@@ -67,10 +67,10 @@ class CarsController extends Controller
         $cars = DB::select("SELECT * FROM cars WHERE car_type = 'bike'");
         return view('index',compact('cars'));
     }
-    public function bookings(Request $request, $id){
+    public function bookings(Request $request, $car_name){
         // $cars = Car::findorFail($id);
         // $id = session()->get($id,[]);
-        $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
+        $cars = DB::select("SELECT * FROM cars WHERE car_name = '$car_name'");
 
         // session()->put('id',$id);
         return view('hire',compact('cars'));
@@ -148,6 +148,7 @@ class CarsController extends Controller
                 "email"=>$request->email,
                 "location"=>$request->location,
                 "days"=>$request->days,
+                "car_image"=>$item->car_image,
                 "car_name"=>$item->car_name,
                 "car_price"=>'2000',
                 "hire_duration"=>$request->days,

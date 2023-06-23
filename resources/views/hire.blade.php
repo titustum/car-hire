@@ -129,7 +129,7 @@ body{
                 <tbody>
                     @foreach($cars as $item)
                     <tr>
-                        <td scope="row"><img src="../images/nissan.jpg" class="img-fluid" height="100px" width="100px" alt=""></td>
+                        <td scope="row"><img src="../images/{{$item->car_image}}" class="img-fluid" height="100px" width="100px" alt="car_image"></td>
                         <td>{{$item->car_brand}}</td>
                         <td>{{$item->car_name}}</td>
                         <td>32,000</td>

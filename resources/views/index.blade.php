@@ -124,14 +124,14 @@
           <div class="col-md-3" >
             <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
-                    <img src="images/cruiser.jpg" class="img-fluid" alt="" style="height: 30vh">
+                    <img src="images/{{$item->car_image}}" class="img-fluid" alt="" style="height: 30vh">
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">{{$item->car_name}}</h3>
                 <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
-                <a href="{{url('bookings/'.$item->id)}}" class="btn btn-primary">BOOK NOW</a>
+                <a href="{{url('bookings/'.$item->car_name)}}" class="btn btn-primary">BOOK NOW</a>
             </div>
             </div>
           </div>

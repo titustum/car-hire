@@ -59,7 +59,7 @@ Route::get('trucks',[CarsController::class, 'truck']);
 //saloon contents
 Route::get('bikes',[CarsController::class, 'bike']);
 //proceed to bookings page
-Route::get('bookings/{id}',[CarsController::class, 'bookings']);
+Route::get('bookings/{car_name}',[CarsController::class, 'bookings']);
 //paersonal details page
 Route::get('proceed/personal-details/{id}',[CarsController::class, 'details']);
 //capture clients details

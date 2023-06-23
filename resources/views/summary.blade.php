@@ -115,7 +115,7 @@ z-index: 1;
     @csrf
     <div class="card-header">
     <label class="font-weight-bold">Car Image :</label>
-<img src="../../images/car.jpg" alt="">
+<img src="../../images/{{$details['car_image']}}" alt="selected car image" height="200vh" width="200vw" style="border-radius:50%">
     </div>
 <div class="card-body">
     <div class="row">
