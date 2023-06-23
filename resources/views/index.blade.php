@@ -58,14 +58,14 @@
 @endif
 <div class="container-fluid mt-2" style="border-bottom-left-radius: .3em">
     <div class="row">
-    <div id="carouselId" class="carousel slide col-md-6" style="height: 60vh;width:50vw" data-ride="carousel">
+    <div id="carouselId" class="carousel slide col-md-6" style="" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselId" data-slide-to="0" class="active"></li>
             <li data-target="#carouselId" data-slide-to="1"></li>
             <li data-target="#carouselId" data-slide-to="2"></li>
             <li data-target="#carouselId" data-slide-to="3"></li>
         </ol>
-        <div class="carousel-inner" role="listbox" style="height: 55vh;width:50vw;border-bottom-left-radius: 15%;border-top-right-radius: 15%">
+        <div class="carousel-inner col-md-12" role="listbox" style="height: 60vh;">
             <div class="carousel-item active" style="height: 60vh">
                 <img class="w-100 img-fluid"  src="images/cruiser.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
@@ -74,21 +74,21 @@
                 </div>
             </div>
             <div class="carousel-item" style="height: 60vh">
-                <img class="w-100" src="images/saloon.jpg" alt="Second slide">
+                <img class="w-100 img-fluid" src="images/saloon.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h3 class="text-warning font-weight-bold">Saloon cars</h3>
                     <a href="{{url('saloons')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
                 </div>
             </div>
             <div class="carousel-item" style="height: 60vh">
-                <img class="w-100" src="images/truck.jpg" alt="Third slide">
+                <img class="w-100 img-fluid" src="images/truck.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h3 class="text-warning font-weight-bold">Trucks</h3>
                     <a href="{{url('trucks')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
                 </div>
             </div>
-            <div class="carousel-item" style="height: 60vh;width:50vw">
-                <img class="w-100" src="images/bike.jpg" style="height: 60vh;width:50vw" alt="Third slide">
+            <div class="carousel-item" style="height: 60vh">
+                <img class="w-100" src="images/bike.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h3 class="text-warning font-weight-bold">Bikes</h3>
                     <a href="{{url('bikes')}}" class="btn btn-secondary" style="text-decoration: none;color:white">View More</a>
