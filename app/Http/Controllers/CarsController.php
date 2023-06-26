@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Carbon\Carbon;
 
 class CarsController extends Controller
 {
@@ -355,7 +356,18 @@ class CarsController extends Controller
         //     return view('/');
         // }
         if(Auth::check()){
-            return view('/admin/index');
+            $clients = DB::table("clients")->count();
+            $cars = DB::table("cars")->count();
+            $rented_cars = DB::table("bookings")->count();
+            $bookings = DB::select("SELECT * FROM bookings");
+
+            foreach($bookings as $d){
+                $return = Carbon::createFromFormat('Y-m-d H:m:s', $d->created_at);
+                $date = $return->addDays($d->hire_duration);
+            }
+
+
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','date'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access..Login first');

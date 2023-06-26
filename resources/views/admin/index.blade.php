@@ -57,7 +57,7 @@
                 </li>
             </ul>
                 <div class="dropdown">
-            <a class="font-weight-bold dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="text-decoration:none;color:teal">  <i class="fa fa-user" style="color:white;font-size:20px"></i></a>
+            <a class="font-weight-bold dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="text-decoration:none;color:teal">{{Auth::user()->firstname}}  <i class="fa fa-user" style="color:white;font-size:20px"></i></a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="{{url('settings')}}">Settings</a>
     <a class="dropdown-item" href="{{url('profile')}}">Profile</a>
@@ -78,7 +78,8 @@
                     </div>
                     <div class="column">
 <p class="text-light font-weight-bold">Total Clients</p>
-<p class="text-light font-weight-bold"> 10</p>
+{{-- @foreach($clienta as $data) --}}
+<p class="text-light font-weight-bold">{{$clients}}</p>
                     </div>
                 </div>
                 
@@ -97,7 +98,7 @@
                         </div>
                         <div class="column">
 <p class="text-light font-weight-bold">Total Rented cars</p>
-<p class="text-light font-weight-bold"> 5</p>
+<p class="text-light font-weight-bold">{{$rented_cars}}</p>
                         </div>
                     </div>
                 
@@ -116,7 +117,7 @@
                             </div>
                             <div class="column">
                             <p class="text-light font-weight-bold">Total Cars</p>
-<p class="text-light font-weight-bold"> 20</p>
+<p class="text-light font-weight-bold">{{$cars}}</p>
                             </div>
                         </div>
                 
@@ -174,7 +175,7 @@
                     <th class="text-center font-weight-bold">BOOKING-CODE</th>
                     <th class="text-center font-weight-bold">CLIENT</th>
                     <th class="text-center font-weight-bold">PHONE</th>
-                    <th class="text-center font-weight-bold">CAR-TYPE</th>
+                    <th class="text-center font-weight-bold">CAR-NAME</th>
                     <th class="text-center font-weight-bold">STATUS</th>
                     <th class="text-center font-weight-bold">DATE-FROM</th>
                     <th class="text-center font-weight-bold">DATE-TO</th>
@@ -182,16 +183,18 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($bookings as $data)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$data->booking_id}}</td>
+                    <td>{{$data->fullname}}</td>
+                    <td>{{$data->phone}}</td>
+                    <td>{{$data->car_name}}</td>
+                    <td class="badge badge-pill badge-success">{{$data->status}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>{{$date}}</td>
+                    <td>{{$data->total_price}}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
