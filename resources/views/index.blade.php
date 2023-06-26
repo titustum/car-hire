@@ -24,6 +24,13 @@
         .carousel-item{
             height: 100vh;
         }
+        #link{
+            color: grey;
+        }
+        #Link:active{
+            color: red;
+            background-color: green;
+        }
         </style>
 </head>
 <body>
@@ -115,7 +122,7 @@
         <div class="row justify-content-around">
             <a href="{{url('4X4s')}}" class="" style="font-size: 17px;text-decoration:none">4 X 4 s</a>
             <a href="{{url('trucks')}}" style="font-size: 17px;text-decoration:none">Trucks</a>
-            <a href="{{url('saloons')}}" style="font-size: 17px;text-decoration:none">Saloons</a>
+            <a href="{{url('saloons')}}" id="Link" style="font-size: 17px;text-decoration:none">Saloons</a>
             <a href="{{url('bikes')}}" style="font-size: 17px;text-decoration:none">Bikes</a>
         </div>
         
