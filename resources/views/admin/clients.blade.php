@@ -68,6 +68,7 @@
             </thead>
             <tbody>
                 @foreach($clients as $data)
+                @foreach($bookings as $item)
                 <tr>
                     <td>{{$data->id}}</td>
                     <td>{{$data->booking_id}}</td>
@@ -75,10 +76,46 @@
                     <td>{{$data->phone}}</td>
                     <td>{{$data->email}}</td>
                     <td>{{$data->location}}</td>
-                    <td class="badge badge-pill text-center badge-primary"><a href="" class="text-white">View Status</a></td>
+                    <td class="badge badge-pill text-center badge-primary"><a href="{{url('modal/'.$data->booking_id)}}" data-toggle="modal" data-target="#exampleModal{{$data->booking_id}}" class="text-white">View Status</a></td>
                 </tr>
+                {{-- view status modal --}}
+                <div class="modal fade" id="exampleModal{{$data->booking_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-dark" id="exampleModalLabel">Edit department</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                           
+                            <form method="post" action="">
+                                <input type="number" name="id" class="form-control" value="{{$data->id}}" hidden>
+                                <label class="font-weight-bold">FullName :</label>
+                                <input type="text" name="fullname" class="form-control" value="{{$item->fullname}}">
+                                <label class="font-weight-bold">STATUS :</label>
+                                <input type="text" name="status" class="form-control" value="{{$item->status}}">
+                            </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                       
+                          <a href="" name="edit"><input type="submit" name="edit" value="Edit" class="btn btn-primary"></a>
+                          </form>
+                          
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {{--  --}}
+          @endforeach
                 @endforeach
             </tbody>
+        </table>
+    </div>
+</div>
+
     
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>

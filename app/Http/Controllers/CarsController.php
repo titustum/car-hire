@@ -93,11 +93,13 @@ class CarsController extends Controller
     }
     public function Clients(){
         $clients = DB::select("SELECT * FROM clients");
-        foreach($clients as $data){
-        $bookings = DB::select("SELECT * FROM bookings WHERE phone = $data->phone");
-        }
 
-            return view('/admin/clients',compact('clients','bookings'));
+            return view('/admin/clients',compact('clients'));
+    }
+    public function modal($booking_id){
+        $bookings = DB::select("SELECT * FROM bookings WHERE booking_id = '$booking_id'");
+        return view('/admin/clients',compact('bookings'));
+
     }
     public function Setting(){
         if(Auth::check()){

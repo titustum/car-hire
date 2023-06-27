@@ -76,3 +76,5 @@ Route::post('proceed/payment/{id}',[CarsController::class, 'payment']);
 Route::post('complete/payment',[CarsController::class, 'submit']);
 //find booking
 Route::post('client/search',[CarsController::class, 'my_bookings']);
+//modal statu
+Route::get('modal/{booking_id}',[CarsController::class,'modal']);
