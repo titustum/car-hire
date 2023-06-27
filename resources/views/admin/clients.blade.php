@@ -58,24 +58,26 @@
             <thead>
                 <tr>
                     <td>#</td>
-                    <td>Client Id</td>
-                    <td>First Name</td>
-                    <td>Second Name</td>
-                    <td>ID No. </td>
-                    <td>Tel No.</td>
+                    <td>Booking Id</td>
+                    <td>FullName</td>
+                    <td>Phone</td>
+                    <td>Email </td>
+                    <td>Location</td>
                     <td>Status</td>
                 </tr>
             </thead>
             <tbody>
+                @foreach($clients as $data)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$data->id}}</td>
+                    <td>{{$data->booking_id}}</td>
+                    <td>{{$data->fullname}}</td>
+                    <td>{{$data->phone}}</td>
+                    <td>{{$data->email}}</td>
+                    <td>{{$data->location}}</td>
+                    <td class="badge badge-pill text-center badge-primary"><a href="" class="text-white">View Status</a></td>
                 </tr>
+                @endforeach
             </tbody>
     
 </body>

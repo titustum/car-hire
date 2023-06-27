@@ -92,7 +92,12 @@ class CarsController extends Controller
         return view('listings');
     }
     public function Clients(){
-            return view('/admin/clients');
+        $clients = DB::select("SELECT * FROM clients");
+        foreach($clients as $data){
+        $bookings = DB::select("SELECT * FROM bookings WHERE phone = $data->phone");
+        }
+
+            return view('/admin/clients',compact('clients','bookings'));
     }
     public function Setting(){
         if(Auth::check()){
