@@ -125,11 +125,11 @@
         <div class="row justify-content-around">
             <a href="{{url('4X4s')}}" id="links" class="font-weight-bold" style="font-size: 17px;text-decoration:none;background-color:forestgreen;padding:6px;color:white;border-radius:15px">4 X 4 s</a>
             <a href="{{url('trucks')}}" id="links" class="font-weight-bold" style="font-size: 17px;text-decoration:none">Trucks</a>
-            <a href="{{url('saloons')}}" id="links" class="font-weight-bold" id="Link" style="font-size: 17px;text-decoration:none">Saloons</a>
+            <a href="{{url('saloons')}}" id="links" class="font-weight-bold"  style="font-size: 17px;text-decoration:none">Saloons</a>
             <a href="{{url('bikes')}}" id="links" class="font-weight-bold" style="font-size: 17px;text-decoration:none">Bikes</a>
         </div>
         
-        <div class="row">
+        <div class="row mt-3">
             @foreach ($cars as $item)
           <div class="col-md-3" >
             <div class="card" style="height: 52vh">
