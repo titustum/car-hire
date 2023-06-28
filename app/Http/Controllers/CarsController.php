@@ -92,7 +92,7 @@ class CarsController extends Controller
         return view('listings');
     }
     public function Clients(){
-        $clients = DB::select("SELECT * FROM clients");
+        $clients = DB::select("SELECT * FROM bookings");
 
             return view('/admin/clients',compact('clients'));
     }

@@ -42,7 +42,7 @@
                 </li>
             </ul>
                 <div class="dropdown">
-            <a class="font-weight-bold dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="text-decoration:none;color:teal">  <i class="fa fa-user" style="color:white;font-size:20px"></i></a>
+            <a class="font-weight-bold dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="text-decoration:none;color:teal">{{Auth::user()->firstname}}  <i class="fa fa-user" style="color:white;font-size:20px"></i></a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="{{url('settings')}}">Settings</a>
     <a class="dropdown-item" href="{{url('profile')}}">Profile</a>
@@ -61,21 +61,21 @@
                     <td>Booking Id</td>
                     <td>FullName</td>
                     <td>Phone</td>
-                    <td>Email </td>
+                    <td>Hire Duration </td>
                     <td>Location</td>
                     <td>Status</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach($clients as $data)
-                @foreach($bookings as $item)
                 <tr>
                     <td>{{$data->id}}</td>
                     <td>{{$data->booking_id}}</td>
                     <td>{{$data->fullname}}</td>
                     <td>{{$data->phone}}</td>
-                    <td>{{$data->email}}</td>
-                    <td>{{$data->location}}</td>
+                    <td>{{$data->hire_duration.' days
+                    (s)'}}</td>
+                    <td>{{$data->total_price}}</td>
                     <td class="badge badge-pill text-center badge-primary"><a href="{{url('modal/'.$data->booking_id)}}" data-toggle="modal" data-target="#exampleModal{{$data->booking_id}}" class="text-white">View Status</a></td>
                 </tr>
                 {{-- view status modal --}}
@@ -83,33 +83,30 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title text-dark" id="exampleModalLabel">Edit department</h5>
+                          <h5 class="modal-title text-dark" id="exampleModalLabel">Client Status</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
-                           
                             <form method="post" action="">
                                 <input type="number" name="id" class="form-control" value="{{$data->id}}" hidden>
                                 <label class="font-weight-bold">FullName :</label>
-                                <input type="text" name="fullname" class="form-control" value="{{$item->fullname}}">
+                                <input type="text" name="fullname" class="form-control" value="{{$data->fullname}}" readonly>
                                 <label class="font-weight-bold">STATUS :</label>
-                                <input type="text" name="status" class="form-control" value="{{$item->status}}">
+                                <input type="text" name="status" class="badge-pill bg-success text-center font-weight-bold text-white form-control" value="{{$data->status}}" readonly>
                             </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                        
                           <a href="" name="edit"><input type="submit" name="edit" value="Edit" class="btn btn-primary"></a>
-                          </form>
-                          
+                        </form>
 
                       </div>
                   </div>
               </div>
           </div>
           {{--  --}}
-          @endforeach
                 @endforeach
             </tbody>
         </table>

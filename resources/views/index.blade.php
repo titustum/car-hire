@@ -138,7 +138,7 @@
                 <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
               </div>
               <div class="card-footer">
-                <a href="{{url('bookings/'.$item->car_name)}}" class="btn btn-primary">BOOK NOW</a>
+                <a href="{{url('bookings/'.$item->car_name)}}" class="btn btn-success font-weight-bold col-md-12">BOOK NOW</a>
             </div>
             </div>
           </div>
