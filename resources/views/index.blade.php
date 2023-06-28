@@ -31,6 +31,9 @@
             color: red;
             background-color: green;
         }
+        #links:hover{
+            text-decoration: underline;
+        }
         </style>
 </head>
 <body>
@@ -120,10 +123,10 @@
     <h4 class="font-weight-bold text-center" style="text-decoration: underline">CATEGORIES</h4>
     <div class="container-fluid">
         <div class="row justify-content-around">
-            <a href="{{url('4X4s')}}" class="font-weight-bold" style="font-size: 17px;text-decoration:none">4 X 4 s</a>
-            <a href="{{url('trucks')}}" class="font-weight-bold" style="font-size: 17px;text-decoration:none">Trucks</a>
-            <a href="{{url('saloons')}}" class="font-weight-bold" id="Link" style="font-size: 17px;text-decoration:none">Saloons</a>
-            <a href="{{url('bikes')}}" class="font-weight-bold" style="font-size: 17px;text-decoration:none">Bikes</a>
+            <a href="{{url('4X4s')}}" id="links" class="font-weight-bold" style="font-size: 17px;text-decoration:none;background-color:forestgreen;padding:6px;color:white;border-radius:15px">4 X 4 s</a>
+            <a href="{{url('trucks')}}" id="links" class="font-weight-bold" style="font-size: 17px;text-decoration:none">Trucks</a>
+            <a href="{{url('saloons')}}" id="links" class="font-weight-bold" id="Link" style="font-size: 17px;text-decoration:none">Saloons</a>
+            <a href="{{url('bikes')}}" id="links" class="font-weight-bold" style="font-size: 17px;text-decoration:none">Bikes</a>
         </div>
         
         <div class="row">
