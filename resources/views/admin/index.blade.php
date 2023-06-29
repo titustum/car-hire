@@ -190,8 +190,8 @@
                     <td>{{$data->phone}}</td>
                     <td>{{$data->car_name}}</td>
                     <td class="badge badge-pill badge-success">{{$data->status}}</td>
-                    <td>{{$data->created_at}}</td>
-                    <td>{{$date}}</td>
+                    <td class="text-success font-weight-bold">{{$data->created_at}}</td>
+                    <td class="text-danger">{{$data->booked_to}}</td>
                     <td>{{$data->total_price}}</td>
                 </tr>
                 @endforeach

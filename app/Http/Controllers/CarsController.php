@@ -224,7 +224,10 @@ class CarsController extends Controller
 
 
        $booked_time=strtotime("current");
-       $booked_time = date('Y-m-d  H:i:sa');
+       $booked_time = date('Y-m-d  H:i:s');
+
+         $return = Carbon::now();
+         $date = $return->addDays($days);
 
           $booking = new Booking;
           $booking->booking_id = $booking_id;
@@ -236,7 +239,7 @@ class CarsController extends Controller
           $booking->hire_duration = $days;
           $booking->total_price = $total_price;
           $booking->status = $booking_status;
-          // $booking->booked_at = $booked_time;
+          $booking->booked_to = $date;
           $booking->save();
 
           DB::update("UPDATE cars SET car_status = 'Booked' WHERE car_id = '$car_id'");
@@ -280,6 +283,9 @@ class CarsController extends Controller
          $booked_time=strtotime("current");
          $booked_time = date('Y-m-d  H:i:sa');
 
+         $return = Carbon::createFromFormat('Y-m-d H:m:s', $booked_time);
+         $date = $return->addDays($request->days);
+
          $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
          foreach($cars as $item){
             $booking = new Booking;
@@ -287,11 +293,11 @@ class CarsController extends Controller
             $booking->fullname = $request->fullname;
             $booking->phone = $request->phone;
             $booking->car_name = $item->car_name;
-            $booking->car_price = '2000';
+            $booking->car_price =$item->car_price;
             $booking->hire_duration = $request->days;
-            $booking->total_price = $request->days * 2000;
+            $booking->total_price = $request->days * $item->car_price;
             $booking->status = "Active";
-            // $booking->booked_at = $booked_time;
+            $booking->booked_to = $date;
             $booking->save();
 
          }
@@ -374,13 +380,16 @@ class CarsController extends Controller
             $rented_cars = DB::table("bookings")->count();
             $bookings = DB::select("SELECT * FROM bookings");
 
-            foreach($bookings as $d){
-                $return = Carbon::createFromFormat('Y-m-d H:m:s', $d->created_at);
-                $date = $return->addDays($d->hire_duration);
-            }
+
+            // for adding days to date
+            
+            // foreach($bookings as $d){
+            //     $return = Carbon::createFromFormat('Y-m-d H:m:s', $d->created_at);
+            //     $date = $return->addDays($d->hire_duration);
+            // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','date'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access..Login first');
