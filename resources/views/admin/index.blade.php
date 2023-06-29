@@ -170,7 +170,8 @@
     <h4 style="text-decoration: underline">Filter Bookings</h4>
     <div class="row">
         <div class="col-md-12">
-        <form action="">
+        <form action="{{route('admin.filter')}}" method="post">
+            @csrf
             <label for="from">Date From :</label>
             <input type="date" class="form-control col-md-4" name="from" id="">
             <label for="to">Date To :</label>

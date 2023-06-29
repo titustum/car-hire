@@ -404,7 +404,16 @@ class CarsController extends Controller
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
     }
-    
+    //filter bookings
+    public function filter(Request $request){
+        $clients = DB::table("clients")->count();
+        $cars = DB::table("cars")->count();
+        $rented_cars = DB::table("bookings")->count();
+
+        $bookings = DB::select("SELECT * FROM bookings WHERE created_at ='$request->from' AND booked_to = '$request->to'");
+
+        return view('admin/index',compact('bookings','clients','cars','rented_cars'));
+    }
     public function Logout() {
         //made some changes here it was Session::flush();
         Session()->flush();
