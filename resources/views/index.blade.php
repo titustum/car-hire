@@ -134,7 +134,7 @@
           <div class="col-md-3 mb-2" >
             <div class="card" style="height: 52vh">
                 <div class="card-img">
-                    <img src="images/{{$item->car_image}}" class="img-fluid" alt="" style="height: 30vh">     
+                    <img src="images/{{$item->car_image}}" class="img-fluid" alt="Vehicle image" style="height: 30vh">     
                 </div>
                 {{-- <div class="card-title">
                     <p style="margin-top: -30vh;font-size:20px;text-transform:uppercase;background-color:yellow" class="font-weight-bold">booked</p>
@@ -151,7 +151,7 @@
             </div>
             <?php }else{
             ?>
-            <div class="card-footer">
+            <div class="card-footer p-2">
                 <p class="btn btn-secondary font-weight-bold col-md-12">BOOKED</p>
             </div>
             <?php }

@@ -198,7 +198,7 @@ class CarsController extends Controller
         date_default_timezone_set('Africa/Nairobi');
         // if(session('data')){
         // foreach(session('data') as $id =>$items){
-            $car_id = $request->car_id;
+            $car_id = $request['car_id'];
             $fullname = $request['fullname'];
             $phone = $request['phone'];
             $email = $request['email'];
@@ -238,6 +238,9 @@ class CarsController extends Controller
           $booking->status = $booking_status;
           // $booking->booked_at = $booked_time;
           $booking->save();
+
+          DB::update("UPDATE cars SET car_status = 'Booked' WHERE car_id = '$car_id'");
+          
           
           session()->forget('data');
           return redirect('/')->with('success', 'Your booking has been received successfully');
