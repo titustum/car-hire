@@ -131,18 +131,31 @@
         
         <div class="row mt-3">
             @foreach ($cars as $item)
-          <div class="col-md-3" >
+          <div class="col-md-3 mb-2" >
             <div class="card" style="height: 52vh">
-                {{-- <div class="card-header"> --}}
-                    <img src="images/{{$item->car_image}}" class="img-fluid" alt="" style="height: 30vh">
-                {{-- </div> --}}
+                <div class="card-img">
+                    <img src="images/{{$item->car_image}}" class="img-fluid" alt="" style="height: 30vh">     
+                </div>
+                {{-- <div class="card-title">
+                    <p style="margin-top: -30vh;font-size:20px;text-transform:uppercase;background-color:yellow" class="font-weight-bold">booked</p>
+                </div> --}}
               <div class="card-body">
                 <h3 class="card-title">{{$item->car_name}}</h3>
-                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> :15</span><span style="color: green;font-size: 20px">$</span></p>
+                <p class="card-text">Price per Hr <span class="font-weight-bold" style="font-size: 20px"> : {{$item->car_price}}</span><span style="color: green;font-size: 20px"> Ksh.</span></p>
               </div>
-              <div class="card-footer">
+              <?php 
+              if($item->car_status == 'Available'){
+                ?>
+              <div class="card-footer p-2">
                 <a href="{{url('bookings/'.$item->car_name)}}" class="btn btn-success font-weight-bold col-md-12">BOOK NOW</a>
             </div>
+            <?php }else{
+            ?>
+            <div class="card-footer">
+                <p class="btn btn-secondary font-weight-bold col-md-12">BOOKED</p>
+            </div>
+            <?php }
+            ?>
             </div>
           </div>
           @endforeach

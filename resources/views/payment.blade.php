@@ -129,6 +129,7 @@ z-index: 1;
                 <option value="">Mobile Banking</option>
             </select>
             {{-- hidden inputs for data capture --}}
+            <input type="text" name="car_id" class="form-control" value="{{$details['car_id']}}" hidden>
             <input type="text" name="booking_id" class="form-control" value="{{$details['booking_id']}}" hidden>
     <input type="text" name="car_name" class="form-control " value="{{$details['car_name']}}" hidden>
     <input type="text" name="fullname" class="form-control " value="{{$details['fullname']}}" hidden>

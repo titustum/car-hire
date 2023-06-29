@@ -150,6 +150,7 @@ class CarsController extends Controller
         }
         $data=[
             $id=>[
+                "car_id"=>$item->car_id,
                 "booking_id"=>$booking_id,
                 "fullname"=>$request->fullname,
                 "phone"=>$request->phone,
@@ -158,9 +159,9 @@ class CarsController extends Controller
                 "days"=>$request->days,
                 "car_image"=>$item->car_image,
                 "car_name"=>$item->car_name,
-                "car_price"=>'2000',
+                "car_price"=>$item->car_price,
                 "hire_duration"=>$request->days,
-                "total_price"=>$request->days * 2000,
+                "total_price"=>$request->days * $item->car_price,
                 "booking_status"=>'Active'
 
             ]
@@ -173,6 +174,7 @@ class CarsController extends Controller
     public function payment(Request $request, $id){
         $data=[
             $id=>[
+                "car_id"=>$request->car_id,
                 "booking_id"=>$request->booking_id,
                 "fullname"=>$request->fullname,
                 "phone"=>$request->phone,
@@ -196,7 +198,7 @@ class CarsController extends Controller
         date_default_timezone_set('Africa/Nairobi');
         // if(session('data')){
         // foreach(session('data') as $id =>$items){
-            // $id = $id;
+            $car_id = $request->car_id;
             $fullname = $request['fullname'];
             $phone = $request['phone'];
             $email = $request['email'];
@@ -226,13 +228,14 @@ class CarsController extends Controller
 
           $booking = new Booking;
           $booking->booking_id = $booking_id;
+          $booking->car_id = $car_id;
           $booking->fullname = $fullname;
           $booking->phone = $phone;
           $booking->car_name = $car_name;
           $booking->car_price = $car_price;
           $booking->hire_duration = $days;
           $booking->total_price = $total_price;
-          $booking->status = "Active";
+          $booking->status = $booking_status;
           // $booking->booked_at = $booked_time;
           $booking->save();
           

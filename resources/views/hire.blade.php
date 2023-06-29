@@ -132,7 +132,7 @@ body{
                         <td scope="row"><img src="../images/{{$item->car_image}}" class="img-fluid" height="100px" width="100px" alt="car_image"></td>
                         <td>{{$item->car_brand}}</td>
                         <td>{{$item->car_name}}</td>
-                        <td>32,000</td>
+                        <td>{{$item->car_price}}</td>
                         <td><a href="{{url('proceed/personal-details/'.$item->id)}}" class="btn btn-success mt-3 mx-5">PROCEED</a></td>
                     </tr>
                     @endforeach

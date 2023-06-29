@@ -123,6 +123,8 @@ z-index: 1;
     <label for="" class="font-weight-bold">Booking id :</label>
     <input type="text" name="booking_id" class="form-control" value="{{$details['booking_id']}}">
     <input type="text" name="location" class="form-control" value="{{$details['location']}}" hidden>
+    <input type="text" name="car_id" class="form-control" value="{{$details['car_id']}}" hidden>
+
 
         </div>
         <div class="column col-md-4">
@@ -159,15 +161,11 @@ z-index: 1;
 </div>
 </div>
 <div class="row">
-    <div class="column col-md-4">
-    <label for="" class="font-weight-bold">Car price :</label>
-    <input type="text" name="car_price" class="form-control" value="{{$details['car_price']}}">
-    </div>
-    <div class="column col-md-4">
+    <div class="column col-md-6">
     <label for="" class="font-weight-bold">Booking status :</label>
     <input type="text" name="booking_status" class="form-control" value="{{$details['booking_status']}}">
     </div>
-    <div class="column col-md-4">
+    <div class="column col-md-6">
     <label for="" class="font-weight-bold">Total price :</label>
     <input type="text" name="total_price" class="form-control" value="{{$details['total_price']}}">
     </div>
