@@ -166,8 +166,22 @@
                         </div>
     </div>
 </div>
+<div class="container mt-5 mb-4">
+    <h4 style="text-decoration: underline">Filter Bookings</h4>
+    <div class="row">
+        <div class="col-md-12">
+        <form action="">
+            <label for="from">Date From :</label>
+            <input type="date" class="form-control col-md-4" name="from" id="">
+            <label for="to">Date To :</label>
+            <input type="date" class="form-control col-md-4" name="to" id="">
+            <input type="submit" class="form-control col-md-4 mt-3 btn btn-primary font-weight-bold" name="submit" value="F I L T E R" id="">
+        </form>
+    </div>
+    </div>
+</div>
 <div class="container mt-5">
-    <h4 class="h4">Recent Car Bookings</h4>
+    <h4 class="font-weight-bold" style="text-decoration: underline">Recent Car Bookings</h4>
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="sample">
             <thead>

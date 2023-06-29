@@ -380,9 +380,19 @@ class CarsController extends Controller
             $rented_cars = DB::table("bookings")->count();
             $bookings = DB::select("SELECT * FROM bookings");
 
+            foreach($bookings as $details){
+                $created_at = Carbon::parse($details->created_at);
+                $booked_to = Carbon::parse($details->booked_to);
+
+                $diff = $created_at->diff($booked_to);
+                if($diff = 0){
+
+                    DB::update("UPDATE bookings SET booking_status='Inactive'");
+                }
+            }
 
             // for adding days to date
-            
+
             // foreach($bookings as $d){
             //     $return = Carbon::createFromFormat('Y-m-d H:m:s', $d->created_at);
             //     $date = $return->addDays($d->hire_duration);
@@ -392,7 +402,7 @@ class CarsController extends Controller
             return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
         }
   
-        return redirect("login")->withSuccess('You are not allowed to access..Login first');
+        return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
     }
     
     public function Logout() {
