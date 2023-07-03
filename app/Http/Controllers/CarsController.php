@@ -182,9 +182,9 @@ class CarsController extends Controller
                 "location"=>$request->location,
                 "days"=>$request->days,
                 "car_name"=>$request->car_name,
-                "car_price"=>'2000',
+                "car_price"=>$request->car_price,
                 "hire_duration"=>$request->days,
-                "total_price"=>$request->days * 2000,
+                "total_price"=>$request->days * $request->car_price,
                 "booking_status"=>'Active'
 
             ]
@@ -378,13 +378,14 @@ class CarsController extends Controller
             $clients = DB::table("clients")->count();
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
-            $bookings = DB::select("SELECT * FROM bookings");
+            // $bookings = Booking::orderBy('id','ASC');
+            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC");
 
             foreach($bookings as $details){
                 $created_at = Carbon::parse($details->created_at);
                 $booked_to = Carbon::parse($details->booked_to);
-
-                $diff = $created_at->diff($booked_to);
+                $return = Carbon::now();
+                $diff = $return->diff($booked_to);
                 if($diff = 0){
 
                     DB::update("UPDATE bookings SET booking_status='Inactive'");
