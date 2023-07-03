@@ -31,7 +31,7 @@
     </header> --}}
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
         <img src="../images/car.jpg" class="img-fluid" width="150px"  style="">
-         <a class="navbar-brand font-weight-bold" id="index" href="#">SIMPSONS RENTS</a>
+         <a class="navbar-brand font-weight-bold" id="index" href="{{url('admin/index')}}">SIMPSONS RENTS</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,7 +66,7 @@
 </div>
 </div>
 </nav>
-<div class="container" >
+<div class="container-fluid" >
     <h3 class="font-weight-bold">Dashboard</h3>
     <div class="row contents">
         <div class="col-md-3 mb-4">
@@ -166,7 +166,7 @@
                         </div>
     </div>
 </div>
-<div class="container mt-5 mb-4">
+<div class="container-fluid mt-5 mb-4">
     <h4 style="text-decoration: underline">Filter Bookings</h4>
     <div class="row">
         <div class="col-md-12">
@@ -181,7 +181,7 @@
     </div>
     </div>
 </div>
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <h4 class="font-weight-bold" style="text-decoration: underline">Recent Car Bookings</h4>
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="sample">
@@ -195,6 +195,8 @@
                     <th class="text-center font-weight-bold">DATE-FROM</th>
                     <th class="text-center font-weight-bold">DATE-TO</th>
                     <th class="text-center font-weight-bold">AMOUNT</th>
+                    <th class="text-center font-weight-bold">ACTIONS</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -204,10 +206,25 @@
                     <td>{{$data->fullname}}</td>
                     <td>{{$data->phone}}</td>
                     <td>{{$data->car_name}}</td>
-                    <td class="badge badge-pill badge-success">{{$data->status}}</td>
+                    <div class="column">
+                    <td class=""><p class="badge badge-pill badge-success"> {{$data->status}}</p>
+                        <p class="badge badge-pill badge-primary">Pending approval..</p>
+                    </td>
+                 
+                    </div>
                     <td class="text-success font-weight-bold">{{$data->created_at}}</td>
                     <td class="text-danger">{{$data->booked_to}}</td>
                     <td>{{$data->total_price}}</td>
+                    <td>
+                <div class="dropdown">
+                    <a href="" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" >View Actions</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{url('settings')}}">Settings</a>
+                        <a class="dropdown-item" href="{{url('profile')}}">Profile</a>
+                        <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
+                      </div>
+                    </div>
+                </td>
                 </tr>
                 @endforeach
             </tbody>

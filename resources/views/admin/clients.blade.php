@@ -76,7 +76,7 @@
                     <td>{{$data->hire_duration.' days
                     (s)'}}</td>
                     <td>{{$data->total_price}}</td>
-                    <td class="badge badge-pill text-center badge-primary"><a href="{{url('modal/'.$data->booking_id)}}" data-toggle="modal" data-target="#exampleModal{{$data->booking_id}}" class="text-white">View Status</a></td>
+                    <td class=""><a href="{{url('modal/'.$data->booking_id)}}" data-toggle="modal" data-target="#exampleModal{{$data->booking_id}}" class="text-white text-center btn btn-primary">View Status</a></td>
                 </tr>
                 {{-- view status modal --}}
                 <div class="modal fade" id="exampleModal{{$data->booking_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
