@@ -382,16 +382,15 @@ class CarsController extends Controller
             $bookings = DB::select("SELECT * FROM bookings ORDER BY created_at ASC");
 
             //updating booking status
-            // foreach($bookings as $details){
-            //     $created_at = Carbon::parse($details->created_at);
-            //     $booked_to = Carbon::parse($details->booked_to);
-            //     $return = Carbon::now();
-            //     $diff = $return->diff($booked_to);
-            //     if($diff = 0){
-
-            //         DB::update("UPDATE bookings SET booking_status='Inactive'");
-            //     }
-            // }
+            foreach($bookings as $details){
+                $created_at = Carbon::parse($details->created_at);
+                $booked_to = Carbon::parse($details->booked_to);
+                $return = Carbon::now();
+                $diff = $return->diff($booked_to);
+                if($diff = 0){
+                    DB::update("UPDATE bookings SET booking_status='Inactive'");
+                }
+            }
 
             // for adding days to date
 
