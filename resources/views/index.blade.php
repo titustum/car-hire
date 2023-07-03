@@ -130,6 +130,9 @@
         </div>
         
         <div class="row mt-3">
+            <?php
+            if(count($cars) !=0 ){
+                ?>
             @foreach ($cars as $item)
           <div class="col-md-3 mb-2" >
             <div class="card" style="height: 52vh">
@@ -159,6 +162,13 @@
             </div>
           </div>
           @endforeach
+          <?php 
+            }else{
+                ?>
+               <div class="container-fluid">
+                <h4 class="font-weight-bold text-danger">!!....No vehicles available. Try other categories</h4>
+               </div>
+                    <?php } ?>
           <div class="col-md-3">
             <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
