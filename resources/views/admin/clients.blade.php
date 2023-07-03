@@ -51,7 +51,7 @@
 </div>
 </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid mt-4">
     <h4 class="text-center font-weight-bold">Active Clients</h4>
     <div class="table-responsive">
         <table class="table table-dark table-bordered table-hover" id="sample">
@@ -63,7 +63,7 @@
                     <td>Phone</td>
                     <td>Hire Duration </td>
                     <td>Location</td>
-                    <td>Status</td>
+                    <td class="text-center font-weight-bold">Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -76,7 +76,7 @@
                     <td>{{$data->hire_duration.' days
                     (s)'}}</td>
                     <td>{{$data->total_price}}</td>
-                    <td class=""><a href="{{url('modal/'.$data->booking_id)}}" data-toggle="modal" data-target="#exampleModal{{$data->booking_id}}" class="text-white text-center btn btn-primary">View Status</a></td>
+                    <td class="text-center font-weight-bold"><a href="{{url('modal/'.$data->booking_id)}}" data-toggle="modal" data-target="#exampleModal{{$data->booking_id}}" class="text-white text-center btn btn-primary">View Status</a></td>
                 </tr>
                 {{-- view status modal --}}
                 <div class="modal fade" id="exampleModal{{$data->booking_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
