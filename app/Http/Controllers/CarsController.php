@@ -379,18 +379,19 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC");
+            $bookings = DB::select("SELECT * FROM bookings ORDER BY created_at ASC");
 
-            foreach($bookings as $details){
-                $created_at = Carbon::parse($details->created_at);
-                $booked_to = Carbon::parse($details->booked_to);
-                $return = Carbon::now();
-                $diff = $return->diff($booked_to);
-                if($diff = 0){
+            //updating booking status
+            // foreach($bookings as $details){
+            //     $created_at = Carbon::parse($details->created_at);
+            //     $booked_to = Carbon::parse($details->booked_to);
+            //     $return = Carbon::now();
+            //     $diff = $return->diff($booked_to);
+            //     if($diff = 0){
 
-                    DB::update("UPDATE bookings SET booking_status='Inactive'");
-                }
-            }
+            //         DB::update("UPDATE bookings SET booking_status='Inactive'");
+            //     }
+            // }
 
             // for adding days to date
 
@@ -411,7 +412,11 @@ class CarsController extends Controller
         $cars = DB::table("cars")->count();
         $rented_cars = DB::table("bookings")->count();
 
-        $bookings = DB::select("SELECT * FROM bookings WHERE created_at ='$request->from' AND booked_to = '$request->to'");
+        $from = strtotime($request->from);
+        $to = strtotime($request->to);
+
+
+        $bookings = DB::select("SELECT * FROM bookings WHERE created_at ='$from' AND booked_to = '$to'");
 
         return view('admin/index',compact('bookings','clients','cars','rented_cars'));
     }

@@ -26,10 +26,10 @@ Route::get('login',function(){
 Route::get('register',function(){
     return view('register');
 });
-//clients home page
-Route::get('/admin/index',function(){
-    return view('/admin/index');
-});
+//admin home page
+// Route::get('/admin/index',function(){
+//     return view('/admin/index');
+// });
 //home when loggedin
 //changed from
 // Route::get('/', [CarsController::class, 'index']); 

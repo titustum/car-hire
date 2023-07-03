@@ -173,9 +173,9 @@
         <form action="{{route('admin.filter')}}" method="post">
             @csrf
             <label for="from">Date From :</label>
-            <input type="datetime-local" class="form-control col-md-4" name="from" id="">
+            <input type="date" class="form-control col-md-4" name="from" id="">
             <label for="to">Date To :</label>
-            <input type="datetime-local" class="form-control col-md-4" name="to" id="">
+            <input type="date" class="form-control col-md-4" name="to" id="">
             <input type="submit" class="form-control col-md-4 mt-3 btn btn-primary font-weight-bold" name="submit" value="F I L T E R" id="">
         </form>
     </div>
