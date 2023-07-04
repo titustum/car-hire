@@ -169,15 +169,67 @@
 <div class="container-fluid mt-5 mb-4">
     <h4 style="text-decoration: underline">Filter Bookings</h4>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
         <form action="{{route('admin.filter')}}" method="post">
             @csrf
             <label for="from">Date From :</label>
-            <input type="date" class="form-control col-md-4" name="from" id="">
+            <input type="date" class="form-control" name="from" id="">
             <label for="to">Date To :</label>
-            <input type="date" class="form-control col-md-4" name="to" id="">
-            <input type="submit" class="form-control col-md-4 mt-3 btn btn-primary font-weight-bold" name="submit" value="F I L T E R" id="">
+            <input type="date" class="form-control" name="to" id="">
+            <input type="submit" class="form-control mt-3 btn btn-primary font-weight-bold" name="submit" value="F I L T E R" id="">
         </form>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <h4 class="text-center font-weight-bold text-white">ADD NEW CARS HERE</h4>
+            </div>
+            <div class="card-body">
+        <form action="{{route('admin.add')}}" method="post">
+            @csrf
+            <label for="image" class="font-weight-bold">Car Image :</label>
+            <input type="file" class="form-control" name="car_image" id="">
+            @if ($errors->has('car_image'))
+            <span class="text-danger">{{ $errors->first('car_image') }}</span><br>
+            @endif
+            <label for="name" class="font-weight-bold">Car Name :</label>
+            <input type="text" class="form-control" name="car_name" id="">
+            @if ($errors->has('car_name'))
+            <span class="text-danger">{{ $errors->first('car_name') }}</span><br>
+            @endif
+            <label for="name" class="font-weight-bold">Car Brand :</label>
+            <select name="car_brand" class="form-control" id="">
+            <option value="">-- Select a brand --</option>
+            <option value="">Toyota</option>
+            <option value="">Nissan</option>
+            <option value="">Subaru</option>
+            <option value="">Mitsubishi</option>
+            <option value="">Ford</option>
+            <option value="">Isuzu</option>
+            </select>
+            @if ($errors->has('car_brand'))
+            <span class="text-danger">{{ $errors->first('car_brand') }}</span><br>
+            @endif
+            <label for="name" class="font-weight-bold">Car Type :</label>
+            <select name="car_type" class="form-control" id="">
+                <option value="">-- Select the type</option>
+                <option value="">4X4</option>
+                <option value="">Trucks</option>
+                <option value="">Saloons</option>
+                <option value="">Bikes</option>
+            </select>
+            @if ($errors->has('car_type'))
+            <span class="text-danger">{{ $errors->first('car_type') }}</span><br>
+            @endif
+            <label for="name" class="font-weight-bold">Car Price :</label>
+            <input type="number" class="form-control" name="car_name" id="">
+            @if ($errors->has('car_price'))
+            <span class="text-danger">{{ $errors->first('car_price') }}</span><br>
+            @endif
+            <input type="submit" class="form-control mt-3 btn btn-success font-weight-bold" name="submit" value="A D D. N E W" id="">
+        </form>
+            </div>
+        </div>
     </div>
     </div>
 </div>

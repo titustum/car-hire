@@ -415,9 +415,28 @@ class CarsController extends Controller
         $to = strtotime($request->to);
 
 
-        $bookings = DB::select("SELECT * FROM bookings WHERE created_at ='$from' AND booked_to = '$to'");
+        $bookings = DB::select("SELECT * FROM bookings WHERE created_at <='$from' AND booked_to <= '$to'");
 
         return view('admin/index',compact('bookings','clients','cars','rented_cars'));
+    }
+    //add new cars
+    public function add(Request $request){
+        $request->validate(
+            [
+                "car_image"=>"Required",
+                "car_name"=>"Required",
+                "car_brand"=>"Required",
+                "car_type"=>"Required",
+                "car_price"=>"Required",
+            ],
+            [
+                "car_image.required"=>"Please select an image",
+                "car_name.required"=>"Provide the car name",
+                "car_brand.required"=>"Select the car brand",
+                "car_type.required"=>"Select the car type",
+                "car_price.required"=>"Enter the car price",
+            ]
+            );
     }
     public function Logout() {
         //made some changes here it was Session::flush();
