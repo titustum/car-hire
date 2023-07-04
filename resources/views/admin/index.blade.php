@@ -77,7 +77,10 @@
                         <h4 class="text-center font-weight-bold text-white">ADD NEW CARS HERE</h4>
                     </div>
                     <div class="card-body">
-                <form action="{{route('admin.add')}}" method="post">
+                        @if(session()->has('success'))
+                        <span class="text-success font-weight-bold">{{session()->get('success')}}</span>
+                        @endif
+                <form action="{{route('admin.add')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <label for="image" class="font-weight-bold">Car Image :</label>
                     <input type="file" class="form-control" name="car_image" id="">
@@ -92,12 +95,13 @@
                     <label for="name" class="font-weight-bold">Car Brand :</label>
                     <select name="car_brand" class="form-control" id="">
                     <option value="">-- Select a brand --</option>
-                    <option value="">Toyota</option>
-                    <option value="">Nissan</option>
-                    <option value="">Subaru</option>
-                    <option value="">Mitsubishi</option>
-                    <option value="">Ford</option>
-                    <option value="">Isuzu</option>
+                    <option >Toyota</option>
+                    <option >Nissan</option>
+                    <option >Subaru</option>
+                    <option >Audi</option>
+                    <option >Mitsubishi</option>
+                    <option >Ford</option>
+                    <option >Isuzu</option>
                     </select>
                     @if ($errors->has('car_brand'))
                     <span class="text-danger">{{ $errors->first('car_brand') }}</span><br>
@@ -105,16 +109,17 @@
                     <label for="name" class="font-weight-bold">Car Type :</label>
                     <select name="car_type" class="form-control" id="">
                         <option value="">-- Select the type</option>
-                        <option value="">4X4</option>
-                        <option value="">Trucks</option>
-                        <option value="">Saloons</option>
-                        <option value="">Bikes</option>
+                        <option >4X4</option>
+                        <option >Trucks</option>
+                        <option >Saloon</option>
+                        <option >Bikes</option>
                     </select>
                     @if ($errors->has('car_type'))
                     <span class="text-danger">{{ $errors->first('car_type') }}</span><br>
                     @endif
                     <label for="name" class="font-weight-bold">Car Price :</label>
-                    <input type="number" class="form-control" name="car_name" id="">
+                    <input type="number" class="form-control" name="car_price" id="">
+                    <p>Per/hr.</p>
                     @if ($errors->has('car_price'))
                     <span class="text-danger">{{ $errors->first('car_price') }}</span><br>
                     @endif

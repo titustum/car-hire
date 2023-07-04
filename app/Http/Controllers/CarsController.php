@@ -421,13 +421,15 @@ class CarsController extends Controller
     }
     //add new cars
     public function add(Request $request){
+
+        $random = substr(($request->car_brand),0,3). random_int(10000,99999);
         $request->validate(
             [
-                "car_image"=>"Required",
-                "car_name"=>"Required",
-                "car_brand"=>"Required",
-                "car_type"=>"Required",
-                "car_price"=>"Required",
+                "car_image"=>"required|image|mimes:jpeg,png,jpg,gif,svg",
+                "car_name"=>"required",
+                "car_brand"=>"required",
+                "car_type"=>"required",
+                "car_price"=>"required",
             ],
             [
                 "car_image.required"=>"Please select an image",
@@ -437,6 +439,22 @@ class CarsController extends Controller
                 "car_price.required"=>"Enter the car price",
             ]
             );
+            $file = $request->file('car_image');
+        $fileName = date('YmdHi').$file->getClientOriginalName();
+        $file-> move(public_path('/images'), $fileName);
+        // $request->_car_image->storeAs('public/images', $fileName);
+        date_default_timezone_set('Africa/Nairobi');
+        $cars = new Car();
+        $cars->car_id = $random;
+        $cars->car_brand = $request->car_brand;
+        $cars->car_type = $request->car_type;
+        $cars->car_name = $request->car_name;
+        $cars->car_image = $fileName;
+        $cars->car_status = "Available";
+        $cars->car_price = $request->car_price;
+        $cars->save();
+
+        return redirect('/admin/index')->with('success',"Car added successfully");
     }
     public function Logout() {
         //made some changes here it was Session::flush();
