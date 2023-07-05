@@ -85,12 +85,12 @@
                     <label for="image" class="font-weight-bold">Car Image :</label>
                     <input type="file" class="form-control" name="car_image" id="">
                     @if ($errors->has('car_image'))
-                    <span class="text-danger">{{ $errors->first('car_image') }}</span><br>
+                    <span class="text-danger font-weight-bold">{{ $errors->first('car_image') }}</span><br>
                     @endif
                     <label for="name" class="font-weight-bold">Car Name :</label>
                     <input type="text" class="form-control" name="car_name" id="">
                     @if ($errors->has('car_name'))
-                    <span class="text-danger">{{ $errors->first('car_name') }}</span><br>
+                    <span class="text-danger font-weight-bold">{{ $errors->first('car_name') }}</span><br>
                     @endif
                     <label for="name" class="font-weight-bold">Car Brand :</label>
                     <select name="car_brand" class="form-control" id="">
@@ -104,7 +104,7 @@
                     <option >Isuzu</option>
                     </select>
                     @if ($errors->has('car_brand'))
-                    <span class="text-danger">{{ $errors->first('car_brand') }}</span><br>
+                    <span class="text-danger font-weight-bold">{{ $errors->first('car_brand') }}</span><br>
                     @endif
                     <label for="name" class="font-weight-bold">Car Type :</label>
                     <select name="car_type" class="form-control" id="">
@@ -115,13 +115,13 @@
                         <option >Bikes</option>
                     </select>
                     @if ($errors->has('car_type'))
-                    <span class="text-danger">{{ $errors->first('car_type') }}</span><br>
+                    <span class="text-danger font-weight-bold">{{ $errors->first('car_type') }}</span><br>
                     @endif
                     <label for="name" class="font-weight-bold">Car Price :</label>
                     <input type="number" class="form-control" name="car_price" id="">
                     <p>Per/hr.</p>
                     @if ($errors->has('car_price'))
-                    <span class="text-danger">{{ $errors->first('car_price') }}</span><br>
+                    <span class="text-danger font-weight-bold">{{ $errors->first('car_price') }}</span><br>
                     @endif
                     <input type="submit" class="form-control mt-3 btn btn-success font-weight-bold" name="submit" value="A D D. N E W" id="">
                 </form>
