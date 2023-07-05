@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Carbon\Carbon;
+use DateTime;
 
 class CarsController extends Controller
 {
@@ -379,16 +380,36 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC");
+            $bookings = DB::select("SELECT * FROM bookings WHERE");
 
             //updating booking status
+
+            date_default_timezone_set('Africa/Nairobi');
+            
+            $booked_time=strtotime("current");
+            $booked_time = date('Y-m-d  H:i:sa');
+
             foreach($bookings as $details){
-                $created_at = Carbon::parse($details->created_at);
-                $booked_to = Carbon::parse($details->booked_to);
-                $return = Carbon::now();
-                $diff = $return->diff($booked_to);
+                // $created_at = Carbon::parse($details->created_at);
+                // $booked_to = Carbon::parse($details->booked_to);
+                // $return = Carbon::now();
+                date_default_timezone_set('Africa/Nairobi');
+                $created_at =strtotime($details->created_at);
+                $booked_to = strtotime($details->booked_to);
+
+                $dateTime1 = new \DateTime($details->created_at);
+                // $booked_to = new \DateTime($details->booked_to);
+                $now =new \DateTime($details->booked_to);
+
+                // $diff = $now->diff($booked_to);
+
+                
+                // $diff = $booked_to - $now;
+                // $difs = new \DateTime("@$dif");
+                $diff = $dateTime1->diff($now);
+                
                 if($diff = 0){
-                    DB::update("UPDATE bookings SET booking_status='Inactive'");
+                    // DB::update("UPDATE bookings SET booking_status='Inactive' WHERE diff = '$diff'");
                 }
             }
 
@@ -400,7 +421,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','diff'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
