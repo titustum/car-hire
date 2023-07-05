@@ -282,9 +282,10 @@ class CarsController extends Controller
 
          date_default_timezone_set('Africa/Nairobi');
          $booked_time=strtotime("current");
-         $booked_time = date('Y-m-d  H:i:sa');
+         $booked_time = date('Y-m-d');
+         $time = time();
 
-         $return = Carbon::createFromFormat('Y-m-d H:m:s', $booked_time);
+         $return = Carbon::createFromFormat('Y-m-d', $booked_time);
          $date = $return->addDays($request->days);
 
          $cars = DB::select("SELECT * FROM cars WHERE id = '$id'");
@@ -299,6 +300,7 @@ class CarsController extends Controller
             $booking->total_price = $request->days * $item->car_price;
             $booking->status = "Active";
             $booking->booked_to = $date;
+            $booking->created_at = $time;
             $booking->save();
 
          }
@@ -380,7 +382,7 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::select("SELECT * FROM bookings WHERE");
+            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC");
 
             //updating booking status
 
@@ -421,7 +423,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','diff'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
@@ -432,11 +434,11 @@ class CarsController extends Controller
         $cars = DB::table("cars")->count();
         $rented_cars = DB::table("bookings")->count();
 
-        $from = strtotime($request->from);
-        $to = strtotime($request->to);
+        $from = ($request->from);
+        $to = ($request->to);
 
 
-        $bookings = DB::select("SELECT * FROM bookings WHERE created_at <='$from' AND booked_to <= '$to'");
+        $bookings = DB::select("SELECT * FROM bookings WHERE  booked_to = '$to'");
 
         return view('admin/index',compact('bookings','clients','cars','rented_cars'));
     }
