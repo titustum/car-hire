@@ -88,7 +88,7 @@
                     <span class="text-danger font-weight-bold">{{ $errors->first('car_image') }}</span><br>
                     @endif
                     <label for="name" class="font-weight-bold">Car Name :</label>
-                    <input type="text" class="form-control" name="car_name" id="">
+                    <input type="text" class="form-control" name="car_name" id="" value="">
                     @if ($errors->has('car_name'))
                     <span class="text-danger font-weight-bold">{{ $errors->first('car_name') }}</span><br>
                     @endif
