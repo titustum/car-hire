@@ -379,7 +379,7 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::select("SELECT * FROM bookings ORDER BY created_at ASC");
+            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC");
 
             //updating booking status
             foreach($bookings as $details){
