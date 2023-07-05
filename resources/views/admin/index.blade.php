@@ -154,7 +154,7 @@
             <div class="card-body" style="background-color:rgb(4, 46, 63);border-top-right-radius:2em;border-top-left-radius:2em;">
                 <div class="row justify-content-between">
                     <div>
-                        <i class="text-white fa-solid fa-users"></i>
+                        <i class="text-white fa-solid fa-users" style="font-size: 35px"></i>
                     </div>
                     <div class="column">
 <p class="text-light font-weight-bold">Total Clients</p>
@@ -164,9 +164,6 @@
                 </div>
                 
             </div>
-            <div class="card-footer">
-                <p>Today :</p>
-            </div>
         </div>
         </div>
         <div class="col-md-6">
@@ -174,7 +171,7 @@
                 <div class="card-body" style="background-color: brown;border-top-right-radius:2em;border-top-left-radius:2em;">
                     <div class="row justify-content-between">
                         <div>
-                            <i class="text-white fa-solid fa-car"></i>
+                            <i class="text-white fa-solid fa-car" style="font-size: 35px"></i>
                         </div>
                         <div class="column">
 <p class="text-light font-weight-bold">Total Rented cars</p>
@@ -184,7 +181,7 @@
                 
                 </div>
                 <div class="card-footer">
-                    <p>Today :</p>
+                    <p class="font-weight-bold" style="font-size: 17px">Today :</p>
                 </div>
             </div>
             </div>
@@ -193,16 +190,13 @@
                     <div class="card-body" style="background-color: gray;border-top-right-radius:2em;border-top-left-radius:2em;">
                         <div class="row justify-content-between">
                             <div>
-                                <i class="text-white fa-solid fa-car" style="font-size: 20pxx"></i>
+                                <i class="text-white fa-solid fa-car" style="font-size: 35px"></i>
                             </div>
                             <div class="column">
                             <p class="text-light font-weight-bold">Total Cars</p>
 <p class="text-light font-weight-bold">{{$cars}}</p>
                             </div>
                         </div>
-                
-                    </div>
-                    <div class="card-footer">
                     </div>
                 </div>
                 </div>
@@ -211,7 +205,7 @@
                         <div class="card-body" style="background-color: rgb(4, 52, 4);border-top-right-radius:2em;border-top-left-radius:2em;">
                             <div class="row justify-content-between">
                                 <div>
-                                    <i class="text-white fa-solid fa-sack-dollar"></i>
+                                    <i class="text-white fa-solid fa-sack-dollar"style="font-size: 35px"></i>
                                 </div>
                                 <div class="column">
 <p class="text-light font-weight-bold">Total Transaction</p>
@@ -221,7 +215,7 @@
                 
                         </div>
                         <div class="card-footer">
-                            <p>Today :</p>
+                            <p class="font-weight-bold" style="font-size: 17px">Today :</p>
                         </div>
                     </div>
                     </div>
@@ -230,7 +224,7 @@
                             <div class="card-body" style="background-color: rgb(69, 13, 13);border-top-right-radius:2em;border-top-left-radius:2em;">
                                 <div class="row justify-content-between">
                                     <div>
-                                        <i class="text-white fa-solid fa-file-lines"></i>
+                                        <i class="text-white fa-solid fa-file-lines"style="font-size: 35px"></i>
                                     </div>
                                     <div class="column">
 <p class="text-light font-weight-bold">Reports</p>
@@ -240,7 +234,7 @@
                 
                             </div>
                             <div class="card-footer">
-                                <p>Today : 5</p>
+                                <p class="font-weight-bold" style="font-size: 17px">Today : 5</p>
                             </div>
                         </div>
                         </div>
