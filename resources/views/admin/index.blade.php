@@ -66,7 +66,7 @@
 </div>
 </div>
 </nav>
-
+{{$diff}}
 <div class="container-fluid" >
     <h3 class="font-weight-bold">Dashboard</h3>
     <div class="row contents">
@@ -272,12 +272,17 @@
                     <td>{{$data->phone}}</td>
                     <td>{{$data->car_name}}</td>
                     <div class="column">
-                    <td class=""><p class="badge badge-pill badge-success"> {{$data->status}}</p>
+                        @if($data->status == 'Active')
+                    <td class=""><p class="badge badge-pill badge-success">Active</p>
                         <p class="badge badge-pill badge-primary">Pending approval..</p>
                     </td>
-                 
+                 @else
+                 <td class=""><p class="badge badge-pill badge-danger">Inactive</p>
+                </td>
+                @endif
+                
                     </div>
-                    <td class="text-success font-weight-bold">{{$data->created_at}}</td>
+                    <td class="text-success font-weight-bold">{{$data->updated_at}}</td>
                     <td class="text-danger">{{$data->booked_to}}</td>
                     <td>{{$data->total_price}}</td>
                     <td>

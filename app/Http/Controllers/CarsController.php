@@ -8,6 +8,7 @@ use App\Models\Client;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -382,7 +383,7 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC");
+            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC ");
 
             //updating booking status
 
@@ -396,22 +397,22 @@ class CarsController extends Controller
                 // $booked_to = Carbon::parse($details->booked_to);
                 // $return = Carbon::now();
                 date_default_timezone_set('Africa/Nairobi');
-                $created_at =strtotime($details->created_at);
+                $updated_at =strtotime($details->updated_at);
                 $booked_to = strtotime($details->booked_to);
-
-                $dateTime1 = new \DateTime($details->created_at);
+                $current = strtotime("current");
+                $dateTime1 = new DateTime($details->created_at);
                 // $booked_to = new \DateTime($details->booked_to);
-                $now =new \DateTime($details->booked_to);
-
-                // $diff = $now->diff($booked_to);
+                
+                $now =strtotime(date("Y-m-d"));
+                $diff = $now-$booked_to;
 
                 
                 // $diff = $booked_to - $now;
                 // $difs = new \DateTime("@$dif");
-                $diff = $dateTime1->diff($now);
+                // $diff = $now - $booked_to;
                 
-                if($diff = 0){
-                    // DB::update("UPDATE bookings SET booking_status='Inactive' WHERE diff = '$diff'");
+                if(($now-$booked_to) > 0){
+                    DB::update("UPDATE bookings SET status='Inactive'");
                 }
             }
 
@@ -423,7 +424,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','diff'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
