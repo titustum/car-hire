@@ -66,7 +66,10 @@
 </div>
 </div>
 </nav>
-{{$diff}}
+@foreach ($bookings as $item)
+   {{$item->booked_to}} 
+@endforeach
+
 <div class="container-fluid" >
     <h3 class="font-weight-bold">Dashboard</h3>
     <div class="row contents">
