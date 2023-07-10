@@ -53,6 +53,8 @@ Route::get('admin/register', [CarsController::class, 'register']);
 Route::get('logout',[CarsController::class, 'Logout']);
 //all bookings
 Route::get('admin/bookings',[CarsController::class, 'all_bookings']);
+//charts page
+Route::get('admin/charts',[CarsController::class, 'charts']);
 //4x4 contents
 Route::get('4X4s',[CarsController::class, 'power']);
 //saloon contents

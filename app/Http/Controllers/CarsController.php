@@ -108,6 +108,10 @@ class CarsController extends Controller
         $bookings = Booking::all();
         return view('admin.bookings',compact('bookings'));
     }
+    //charts
+    public function charts(){
+        return view('admin.charts');
+    }
     public function Setting(){
         if(Auth::check()){
             return view('setting');
