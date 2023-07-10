@@ -293,8 +293,8 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" id="menu1"  data-toggle="dropdown" >View Actions</button>
                     <div class="dropdown-menu" role="menu"  aria-labelledby="menu1">
-                        <a class="dropdown-item bg-warning mb-1 font-weight-bold" href="{{url('aprove')}}">APPROVE</a>
-                        <a class="dropdown-item bg-danger font-weight-bold" href="{{url('cancel')}}">CANCEL</a>
+                        <a class="dropdown-item bg-warning mb-1 font-weight-bold" href="{{route('admin.aprove')}}">APPROVE</a>
+                        <a class="dropdown-item bg-danger font-weight-bold" href="{{route('admin.cancel')}}">CANCEL</a>
                         <a class="dropdown-item font-weight-bold" href="{{url('more')}}">MORE</a>
                       </div>
                     </div>
