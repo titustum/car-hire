@@ -86,3 +86,6 @@ Route::post('admin/filter',[CarsController::class, 'filter'])->name('admin.filte
 Route::post('admin/add',[CarsController::class, 'add'])->name('admin.add');
 //appprove booking
 Route::get('admin/approve/{booking_id}',[CarsController::class, 'approve'])->name('admin/approve/{booking_id}');
+//cancel booking
+Route::get('admin/cancel/{booking_id}',[CarsController::class, 'cancel'])->name('admin/cancel/{booking_id}');
+

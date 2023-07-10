@@ -412,7 +412,7 @@ class CarsController extends Controller
                 // $diff = $now - $booked_to;
                 
                 if($diff < 0){
-                    DB::update("UPDATE bookings SET status='Active'");
+                    // DB::update("UPDATE bookings SET status='Active'");
                 }
             }
 
@@ -481,8 +481,13 @@ class CarsController extends Controller
         return redirect('/admin/index')->with('success',"Car added successfully");
     }
     //approve booking
-    public function approve(Request $request, $booking_id){
-        $bookings = DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
+    public function approve($booking_id){
+        DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
+        return redirect('admin/index');
+    }
+    //cancel booking
+    public function cancel($booking_id){
+        DB::update("UPDATE bookings SET status='Inactive',status_state='Cancelled' WHERE booking_id='$booking_id'");
         return redirect('admin/index');
     }
     public function Logout() {
