@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//user index page
 Route::get('/', function () {
     $cars = DB::select("SELECT * FROM cars WHERE car_type = '4X4'");
         return view('index',compact('cars'));
     // return view('index');
 });
+//login route
 Route::get('login',function(){
     return view('login');
 });
+//register route
 Route::get('register',function(){
     return view('register');
 });
@@ -64,7 +66,7 @@ Route::get('bookings/{car_name}',[CarsController::class, 'bookings']);
 Route::get('proceed/personal-details/{id}',[CarsController::class, 'details']);
 //capture clients details
 Route::post('user/register/{id}',[CarsController::class, 'client_gister']);
-
+//summary page
 Route::get('summary',function(){
     return view('summary');
 });
@@ -76,7 +78,7 @@ Route::post('proceed/payment/{id}',[CarsController::class, 'payment']);
 Route::post('complete/payment',[CarsController::class, 'submit']);
 //find booking
 Route::post('client/search',[CarsController::class, 'my_bookings']);
-//modal statu
+//modal status
 Route::get('modal/{booking_id}',[CarsController::class,'modal']);
 //filter bookings
 Route::post('admin/filter',[CarsController::class, 'filter'])->name('admin.filter');

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/DataTables-1.13.4/css/jquery.dataTables.css')}}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
 <script type="text/javascript" src="{{asset('DataTables/DataTables-1.13.4/js/jquery.dataTables.js')}}"></script>
@@ -290,11 +291,11 @@
                     <td>{{$data->total_price}}</td>
                     <td>
                 <div class="dropdown">
-                    <a href="" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" >View Actions</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{url('settings')}}">Settings</a>
-                        <a class="dropdown-item" href="{{url('profile')}}">Profile</a>
-                        <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
+                    <button class="btn btn-secondary dropdown-toggle" id="menu1"  data-toggle="dropdown" >View Actions</button>
+                    <div class="dropdown-menu" role="menu"  aria-labelledby="menu1">
+                        <a class="dropdown-item bg-warning mb-1 font-weight-bold" href="{{url('aprove')}}">APPROVE</a>
+                        <a class="dropdown-item bg-danger font-weight-bold" href="{{url('cancel')}}">CANCEL</a>
+                        <a class="dropdown-item font-weight-bold" href="{{url('more')}}">MORE</a>
                       </div>
                     </div>
                 </td>

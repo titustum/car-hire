@@ -383,7 +383,7 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::select("SELECT * FROM bookings ORDER BY id ASC ");
+            $bookings = DB::table('bookings')->orderBy('id','ASC')->get();
 
             //updating booking status
 
@@ -396,8 +396,6 @@ class CarsController extends Controller
                 // $created_at = Carbon::parse($details->created_at);
                 // $booked_to = Carbon::parse($details->booked_to);
                 // $return = Carbon::now();
-                // $booked_to="";
-                // $details->booked_to = $booked_to;
                 date_default_timezone_set('Africa/Nairobi');
                 $updated_at =strtotime($details->updated_at);
                 $booked_to = strtotime($details->booked_to);
@@ -406,17 +404,16 @@ class CarsController extends Controller
                 // $booked_to = new \DateTime($details->booked_to);
                 
                 $now =strtotime(date("Y-m-d"));
-                // $diff = json_decode($now)->diff($booked_to);
+                $diff = $now-$booked_to;
 
                 
-                $diff = $now - strtotime($details->booked_to);
-                // $value = implode(',', $diff);
+                // $diff = $booked_to - $now;
                 // $difs = new \DateTime("@$dif");
                 // $diff = $now - $booked_to;
                 
-                // if($diff > 0){
-   
-                // }
+                if($diff < 0){
+                    DB::update("UPDATE bookings SET status='Active'");
+                }
             }
 
             // for adding days to date
@@ -427,7 +424,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','diff','now'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
@@ -438,11 +435,11 @@ class CarsController extends Controller
         $cars = DB::table("cars")->count();
         $rented_cars = DB::table("bookings")->count();
 
-        $from = ($request->from);
-        $to = ($request->to);
+        $from =$request->from;
+        $to =$request->to;
 
 
-        $bookings = DB::select("SELECT * FROM bookings WHERE  booked_to = '$to'");
+        $bookings = Booking::where('booked_to',$to);
 
         return view('admin/index',compact('bookings','clients','cars','rented_cars'));
     }
