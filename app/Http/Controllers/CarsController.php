@@ -480,6 +480,11 @@ class CarsController extends Controller
 
         return redirect('/admin/index')->with('success',"Car added successfully");
     }
+    //approve booking
+    public function approve(Request $request, $booking_id){
+        $bookings = DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
+        return redirect('admin/index');
+    }
     public function Logout() {
         //made some changes here it was Session::flush();
         Session()->flush();

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('hire_duration');
             $table->string('total_price');
             $table->string('status');
+            $table->string('status_state');
             $table->time('booked_at');
             $table->timestamps();
         }

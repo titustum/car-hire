@@ -278,12 +278,12 @@
                     <div class="column">
                         @if($data->status == 'Active')
                     <td class=""><p class="badge badge-pill badge-success">Active</p>
-                        <p class="badge badge-pill badge-primary">Pending approval..</p>
+                        <p class="badge badge-pill badge-warning">{{$data->status_state}}</p>
                     </td>
-                 @else
+                  @else
                  <td class=""><p class="badge badge-pill badge-danger">Inactive</p>
                 </td>
-                @endif
+              @endif
                 
                     </div>
                     <td class="text-success font-weight-bold">{{$data->updated_at}}</td>
@@ -293,8 +293,8 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" id="menu1"  data-toggle="dropdown" >View Actions</button>
                     <div class="dropdown-menu" role="menu"  aria-labelledby="menu1">
-                        <a class="dropdown-item bg-warning mb-1 font-weight-bold" href="{{route('admin.aprove')}}">APPROVE</a>
-                        <a class="dropdown-item bg-danger font-weight-bold" href="{{route('admin.cancel')}}">CANCEL</a>
+                        <a class="dropdown-item bg-warning mb-1 font-weight-bold" href="{{url('admin/approve/'.$data->booking_id)}}" onClick="return confirm('Are you sure you want to apporve this booking?')">APPROVE</a>
+                        <a class="dropdown-item bg-danger font-weight-bold" href="{{url('admin/cancel/'.$data->booking_id)}}">CANCEL</a>
                         <a class="dropdown-item font-weight-bold" href="{{url('more')}}">MORE</a>
                       </div>
                     </div>
