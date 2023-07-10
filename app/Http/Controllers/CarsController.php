@@ -241,6 +241,7 @@ class CarsController extends Controller
           $booking->hire_duration = $days;
           $booking->total_price = $total_price;
           $booking->status = $booking_status;
+          $booking->status_state = 'Pending approval..';
           $booking->booked_to = $date;
           $booking->save();
 
@@ -438,8 +439,8 @@ class CarsController extends Controller
         $from =$request->from;
         $to =$request->to;
 
-
-        $bookings = Booking::where('booked_to',$to);
+        $bookings = Booking::where('booked_to','<=',$to)->get();
+        // $bookings = DB::select("SELECT * FROM bookings WHERE booked_to<='$to'");
 
         return view('admin/index',compact('bookings','clients','cars','rented_cars'));
     }

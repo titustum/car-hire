@@ -26,7 +26,7 @@
 <body >
     
         @if(session()->has('message'))
-        <div class="alert alert-warning alert-dismissible fade show text-center "  role="alert" style="position:sticky">
+        <div class="alert alert-warning alert-dismissible fade show text-center"  role="alert" style="position:sticky">
         <span class="font-weight-bold">{{session()->get('message')}}</span>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
              <span aria-hidden="true">&times;</span>
@@ -152,9 +152,9 @@
                     <div class="card-body">
             <form action="{{route('admin.filter')}}" method="post">
                 @csrf
-                <label for="from">Date From :</label>
+                <label for="from" class="font-weight-bold">Date From :</label>
                 <input type="date" class="form-control" name="from" id="">
-                <label for="to">Date To :</label>
+                <label for="to" class="font-weight-bold">Date To :</label>
                 <input type="date" class="form-control" name="to" id="">
                 <input type="submit" class="form-control mt-3 btn btn-primary font-weight-bold" name="submit" value="F I L T E R" id="">
             </form>
