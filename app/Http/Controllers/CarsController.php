@@ -482,8 +482,19 @@ class CarsController extends Controller
     }
     //approve booking
     public function approve($booking_id){
-        DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
-        return redirect('admin/index');
+        $row = DB::select("SELECT * FROM bookings WHERE booking_id='$booking_id'");
+        foreach($row as $rows){
+            if($rows->status_state == 'Approved'){
+                $message = "Booking already approved ";
+                return redirect('admin/index')->with('message',$message);
+            }elseif($rows->status_state == 'Cancelled'){
+                $message = "Sorry!!...Cannot approve a cancelled booking";
+                return redirect('admin/index')->with('message',$message);
+            }else{
+                DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
+                return redirect('admin/index');
+            }
+        }
     }
     //cancel booking
     public function cancel($booking_id){

@@ -24,6 +24,17 @@
         </style>
 </head>
 <body >
+    
+        @if(session()->has('message'))
+        <div class="alert alert-warning alert-dismissible fade show text-center "  role="alert" style="position:sticky">
+        <span class="font-weight-bold">{{session()->get('message')}}</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+             </div>
+        @endif
+   
+            
     {{-- <header>
         <div id="logo" class="col-md-12">
             
