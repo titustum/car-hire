@@ -103,6 +103,11 @@ class CarsController extends Controller
         return view('/admin/clients',compact('bookings'));
 
     }
+    //all bokings
+    public function all_bookings(){
+        $bookings = Booking::all();
+        return view('admin.bookings',compact('bookings'));
+    }
     public function Setting(){
         if(Auth::check()){
             return view('setting');
@@ -384,7 +389,7 @@ class CarsController extends Controller
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
             // $bookings = Booking::orderBy('id','ASC');
-            $bookings = DB::table('bookings')->orderBy('id','ASC')->get();
+            $bookings = DB::table('bookings')->orderBy('id','ASC')->limit(5)->get();
 
             //updating booking status
 

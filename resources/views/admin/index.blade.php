@@ -56,7 +56,7 @@
                     <a class="nav-link" href="{{url('/admin/charts')}}" style="font-size: 20px">Revenue charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('types')}}" style="font-size: 20px">Car Types</a>
+                    <a class="nav-link" href="{{url('admin/bookings')}}" style="font-size: 20px">Bookings</a>
                 </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{url('listings')}}" style="font-size: 20px">Car Listing</a>
@@ -150,7 +150,7 @@
                         <h4 style="text-decoration: underline" class="text-center">Filter Bookings</h4>
                     </div>
                     <div class="card-body">
-            <form action="{{route('admin.filter')}}" method="get">
+            <form action="{{route('admin.index')}}" method="post">
                 @csrf
                 <label for="from" class="font-weight-bold">Date From :</label>
                 <input type="date" class="form-control" name="from" id="">

@@ -51,7 +51,8 @@ Route::get('admin/login', [CarsController::class, 'Login']);
 Route::get('admin/register', [CarsController::class, 'register']);
 //logout
 Route::get('logout',[CarsController::class, 'Logout']);
-
+//all bookings
+Route::get('admin/bookings',[CarsController::class, 'all_bookings']);
 //4x4 contents
 Route::get('4X4s',[CarsController::class, 'power']);
 //saloon contents
@@ -81,7 +82,7 @@ Route::post('client/search',[CarsController::class, 'my_bookings']);
 //modal status
 Route::get('modal/{booking_id}',[CarsController::class,'modal']);
 //filter bookings
-Route::get('admin/filter',[CarsController::class, 'filter'])->name('admin.filter');
+Route::post('admin/index',[CarsController::class, 'filter'])->name('admin.index');
 //add new cars into the database
 Route::post('admin/add',[CarsController::class, 'add'])->name('admin.add');
 //appprove booking
