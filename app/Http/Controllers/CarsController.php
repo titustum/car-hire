@@ -438,9 +438,9 @@ class CarsController extends Controller
 
         $from =$request->from;
         $to =$request->to;
-
-        $bookings = Booking::where('booked_to','<=',$to)->get();
-        // $bookings = DB::select("SELECT * FROM bookings WHERE booked_to<='$to'");
+        //also working well but has issues with displaying the updated_at column
+        // $bookings = Booking::where('updated_at','>=',$from)->where('booked_to','<=',$to)->get();
+        $bookings = DB::select("SELECT * FROM bookings WHERE updated_at >='$from' AND booked_to<='$to'");
 
         return view('admin/index',compact('bookings','clients','cars','rented_cars'));
     }

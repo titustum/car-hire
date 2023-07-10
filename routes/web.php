@@ -81,7 +81,7 @@ Route::post('client/search',[CarsController::class, 'my_bookings']);
 //modal status
 Route::get('modal/{booking_id}',[CarsController::class,'modal']);
 //filter bookings
-Route::post('admin/filter',[CarsController::class, 'filter'])->name('admin.filter');
+Route::get('admin/filter',[CarsController::class, 'filter'])->name('admin.filter');
 //add new cars into the database
 Route::post('admin/add',[CarsController::class, 'add'])->name('admin.add');
 //appprove booking
