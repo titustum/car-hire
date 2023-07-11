@@ -451,13 +451,16 @@ class CarsController extends Controller
         $cars = DB::table("cars")->count();
         $rented_cars = DB::table("bookings")->count();
 
+        $today = date("Y-m-d");
+            $rented_cars_today = DB::table("bookings")->where('updated_at','=',$today)->count();
+
         $from =$request->from;
         $to =$request->to;
         //also working well but has issues with displaying the updated_at column
         // $bookings = Booking::where('updated_at','>=',$from)->where('booked_to','<=',$to)->get();
         $bookings = DB::select("SELECT * FROM bookings WHERE updated_at >='$from' AND booked_to<='$to'");
 
-        return view('admin/index',compact('bookings','clients','cars','rented_cars'));
+        return view('admin/index',compact('bookings','clients','cars','rented_cars','rented_cars_today'));
     }
     //add new cars
     public function add(Request $request){
@@ -515,6 +518,11 @@ class CarsController extends Controller
     //cancel booking
     public function cancel($booking_id){
         DB::update("UPDATE bookings SET status='Inactive',status_state='Cancelled' WHERE booking_id='$booking_id'");
+        $book = DB::select("SELECT * FROM bookings WHERE booking_id='$booking_id'");
+        foreach($book as $data){
+       
+           DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$data->car_id'");
+        }
         return redirect('admin/index');
     }
     public function Logout() {
