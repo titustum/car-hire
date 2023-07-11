@@ -81,9 +81,9 @@
 </div>
 </div>
 </nav>
-@foreach ($bookings as $item)
-   {{$item->booked_to}} 
-@endforeach
+{{-- @foreach ($bookings as $item) --}}
+   {{$booked_to}} 
+{{-- @endforeach --}}
 
 <div class="container-fluid" >
     <h3 class="font-weight-bold">Dashboard</h3>
