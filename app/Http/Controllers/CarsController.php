@@ -392,7 +392,7 @@ class CarsController extends Controller
             $clients = DB::table("clients")->count();
             $cars = DB::table("cars")->count();
             $rented_cars = DB::table("bookings")->count();
-            // $bookings = Booking::orderBy('id','ASC');
+            $notifications = Booking::where('status_state','Pending approval..')->count();
             $bookings = DB::table('bookings')->orderBy('id','ASC')->limit(5)->get();
 
             //updating booking status
@@ -436,7 +436,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
@@ -449,6 +449,7 @@ class CarsController extends Controller
         );
         $clients = DB::table("clients")->count();
         $cars = DB::table("cars")->count();
+        $notifications = Booking::where('status_state','Pending approval..')->count();
         $rented_cars = DB::table("bookings")->count();
 
         $today = date("Y-m-d");
@@ -460,7 +461,7 @@ class CarsController extends Controller
         // $bookings = Booking::where('updated_at','>=',$from)->where('booked_to','<=',$to)->get();
         $bookings = DB::select("SELECT * FROM bookings WHERE updated_at >='$from' AND booked_to<='$to'");
 
-        return view('admin/index',compact('bookings','clients','cars','rented_cars','rented_cars_today'));
+        return view('admin/index',compact('bookings','clients','cars','rented_cars','rented_cars_today','notifications'));
     }
     //add new cars
     public function add(Request $request){

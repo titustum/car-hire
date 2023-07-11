@@ -67,6 +67,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/admin/clients')}}" style="font-size: 20px">Clients</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/admin/notifications')}}" style="font-size: 20px"><i class="fa-solid fa-bell"></i><sub class="text-white">{{$notifications}}</sub></a>
+                </li>
             </ul>
                 <div class="dropdown">
             <a class="font-weight-bold dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="text-decoration:none;color:teal">{{Auth::user()->firstname}}  <i class="fa fa-user" style="color:white;font-size:20px"></i></a>
