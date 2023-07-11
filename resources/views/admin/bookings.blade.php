@@ -17,6 +17,14 @@
     <title>All bookings</title>
 </head>
 <body>
+    @if(session()->has('message'))
+    <div class="alert alert-warning alert-dismissible fade show text-center"  role="alert" style="position:sticky">
+    <span class="font-weight-bold">{{session()->get('message')}}</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+         </div>
+    @endif
     <nav class="navbar navbar-expand-lg col-md-12 navbar-dark bg-dark sticky-top">
         <img src="../images/car.jpg" class="img-fluid" width="150px"  style="">
          <a class="navbar-brand font-weight-bold" id="index" href="{{url('admin/index')}}">SIMPSONS RENTS</a>
@@ -65,8 +73,10 @@
                 <th class="font-weight-bold text-center">CAR_NAME</th>
                 <th class="font-weight-bold text-center">HIRE_DURATION</th>
                 <th class="font-weight-bold text-center">STATUS</th>
+                <th class="font-weight-bold text-center">STATUS_STATE</th>
                 <th class="font-weight-bold text-center">TOTAL_PRICE</th>
                 <th class="font-weight-bold text-center">BOOKED_TO</th>
+                <th class="font-weight-bold text-center">ACTIONS</th>
             </tr>
         </thead>
         <tbody>
@@ -83,8 +93,18 @@
                 @else
                 <td class="text-danger font-weight-bold">{{$data->status}}</td>
                 @endif
+                @if($data->status_state == 'Pending approval..')
+                <td class="text-warning font-weight-bold">{{$data->status_state}}</td>
+                @elseif($data->status_state == 'Approved')
+                <td class="text-success font-weight-bold">{{$data->status_state}}</td>
+                @else
+                <td class="text-danger font-weight-bold">{{$data->status_state}}</td>
+                @endif
                 <td>{{$data->total_price}}</td>
                 <td>{{$data->booked_to}}</td>
+                <td><a href="{{url('admin/approve/'.$data->booking_id)}}" onClick="return confirm('Are you sure you want to approve this booking?')" class="text-primary font-weight-bold">Approve</a>
+                    <a href="{{url('admin/cancel/'.$data->booking_id)}}" onClick="return confirm('Are you sure you want to cancel this booking?')" class="mx-2 font-weight-bold text-warning">Cancel</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
