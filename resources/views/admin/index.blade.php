@@ -154,8 +154,14 @@
                 @csrf
                 <label for="from" class="font-weight-bold">Date From :</label>
                 <input type="date" class="form-control" name="from" id="">
+                @if($errors->has('from'))
+                <span class="text-danger font-weight-bold">{{$errors->first('from')}}</span><br>
+                @endif
                 <label for="to" class="font-weight-bold">Date To :</label>
                 <input type="date" class="form-control" name="to" id="">
+                @if($errors->has('to'))
+                <span class="text-danger font-weight-bold">{{$errors->first('to')}}</span>
+                @endif
                 <input type="submit" class="form-control mt-3 btn btn-primary font-weight-bold" name="submit" value="F I L T E R" id="">
             </form>
                     </div>
@@ -197,7 +203,7 @@
                 
                 </div>
                 <div class="card-footer">
-                    <p class="font-weight-bold" style="font-size: 17px">Today :</p>
+                    <p class="font-weight-bold" style="font-size: 17px">Today : {{$rented_cars_today}}</p>
                 </div>
             </div>
             </div>

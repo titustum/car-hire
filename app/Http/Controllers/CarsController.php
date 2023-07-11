@@ -396,6 +396,8 @@ class CarsController extends Controller
             $bookings = DB::table('bookings')->orderBy('id','ASC')->limit(5)->get();
 
             //updating booking status
+            $today = date("Y-m-d");
+            $rented_cars_today = DB::table("bookings")->where('updated_at','=',$today)->count();
 
             date_default_timezone_set('Africa/Nairobi');
             
@@ -434,13 +436,17 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
     }
     //filter bookings
     public function filter(Request $request){
+        $request->validate([
+            "from"=>'required',
+            "to"=>'required']
+        );
         $clients = DB::table("clients")->count();
         $cars = DB::table("cars")->count();
         $rented_cars = DB::table("bookings")->count();
