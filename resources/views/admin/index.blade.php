@@ -273,7 +273,7 @@
 <div class="container-fluid mt-5">
     <h4 class="font-weight-bold" style="text-decoration: underline">Recent Car Bookings</h4>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="sample">
+        <table class="table table-bordered table-hover table-dark" id="sample">
             <thead>
                 <tr>
                     <th class="text-center font-weight-bold">BOOKING-CODE</th>
