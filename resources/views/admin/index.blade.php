@@ -82,7 +82,7 @@
 </div>
 </nav>
 {{-- @foreach ($bookings as $item) --}}
-   {{$booked_to}} 
+   {{$updated_at}} 
 {{-- @endforeach --}}
 
 <div class="container-fluid" >
