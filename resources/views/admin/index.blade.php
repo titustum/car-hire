@@ -81,9 +81,16 @@
 </div>
 </div>
 </nav>
-{{-- @foreach ($bookings as $item) --}}
-   {{$updated_at}} 
-{{-- @endforeach --}}
+<?php 
+$now = date('Y-m-d');
+// echo $now;
+?>
+
+<?php 
+
+
+?>
+
 
 <div class="container-fluid" >
     <h3 class="font-weight-bold">Dashboard</h3>

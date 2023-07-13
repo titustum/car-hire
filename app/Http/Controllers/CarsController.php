@@ -403,6 +403,15 @@ class CarsController extends Controller
             
             $booked_time=strtotime("current");
             $booked_time = date('Y-m-d  H:i:sa');
+            $dates = DB::select("SELECT * FROM bookings");
+            foreach ($dates as $item){
+                $today =strtotime(Date('Y-m-d'));
+            
+            $booked_to =strtotime($item->booked_to);
+            
+            $diff = ($today - $booked_to).' days';
+            DB::update("UPDATE bookings SET diff='$diff'");
+            }
 
             foreach($bookings as $details){
                 // $created_at = Carbon::parse($details->created_at);
@@ -436,7 +445,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications','updated_at'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications','dates'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
