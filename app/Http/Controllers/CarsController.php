@@ -403,12 +403,12 @@ class CarsController extends Controller
             $today =date_create(Date('Y-m-d'));
             $booked_time=strtotime("current");
             $booked_time = date('Y-m-d  H:i:sa');
-            $dates = DB::select("SELECT car_id,id,DATEDIFF( booked_to,now()) AS diff FROM bookings");
+            $dates = DB::select("SELECT status,car_id,id,DATEDIFF( booked_to,now()) AS diff FROM bookings");
             foreach ($dates as $item){
                 $book_id = $item->id;
                 $date_diff = $item->diff;
                 $cars_id = $item->car_id;
-                // $status = $item->status;
+                $b_status = $item->status;
 
                 // $today =date_create(Date('Y-m-d'));
                 // $booked_to =date_create($item->booked_to);
@@ -419,7 +419,13 @@ class CarsController extends Controller
                 DB::table('bookings')->where('id', $book_id)->update(['diff' => $date_diff. ' day(s)']);
                 if($date_diff <= 0){
                 DB::table('bookings')->where('id', $book_id)->update(['status' => 'Inactive', 'status_state' =>'Inactive']);
-                DB::table('cars')->where('car_id', $cars_id)->update(['car_status' => 'Available']);
+                if($b_status == 'Inactive'){
+                    $Cars = DB::select("SELECT car_id FROM bookings WHERE status='Inactive'");
+                    foreach($Cars as $details){
+                        $id = $details->car_id;
+                        DB::table('cars')->where('car_id', $id)->update(['car_status' => 'Available']);
+                    }
+                }
                 }
             }
 
