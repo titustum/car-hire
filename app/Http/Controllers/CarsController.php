@@ -354,6 +354,8 @@ class CarsController extends Controller
             return redirect('/admin/register')->with('error','The password doesnt match');
         }else{
            
+
+            
         $data = $request->all();
         // $check = $this->create($data);
         
