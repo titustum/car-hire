@@ -423,7 +423,8 @@ class CarsController extends Controller
                     $Cars = DB::select("SELECT car_id FROM bookings WHERE status='Inactive'");
                     foreach($Cars as $details){
                         $id = $details->car_id;
-                        DB::table('cars')->where('car_id', $id)->update(['car_status' => 'Available']);
+                        DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$id'");
+                        // DB::table('cars')->where('car_id', $id)->update(['car_status' => 'Available']);
                     }
                 }
                 }
@@ -461,7 +462,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications','Cars'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
