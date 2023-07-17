@@ -400,17 +400,25 @@ class CarsController extends Controller
             $rented_cars_today = DB::table("bookings")->where('updated_at','=',$today)->count();
 
             date_default_timezone_set('Africa/Nairobi');
-            
+            $today =date_create(Date('Y-m-d'));
             $booked_time=strtotime("current");
             $booked_time = date('Y-m-d  H:i:sa');
-            $dates = DB::select("SELECT * FROM bookings");
+            $dates = DB::select("SELECT id,DATEDIFF( booked_to,now()) AS diff FROM bookings");
             foreach ($dates as $item){
-                $today =strtotime(Date('Y-m-d'));
-            
-            $booked_to =strtotime($item->booked_to);
-            
-            $diff = ($today - $booked_to).' days';
-            DB::update("UPDATE bookings SET diff='$diff'");
+                $book_id = $item->id;
+                $date_diff = $item->diff;
+                $cars_id = $item->car_id;
+
+                // $today =date_create(Date('Y-m-d'));
+                // $booked_to =date_create($item->booked_to);
+                // $diff = date_diff($booked_to, $today);
+                // $diff_format = $diff->format("%R%a days");
+                // DB::update("UPDATE bookings SET diff='$diff_format'");
+
+                DB::table('bookings')->where('id', $book_id)->update(['diff' => $date_diff. ' day(s)']);
+                if($date_diff <= 0){
+                DB::table('bookings')->where('id', $book_id)->update(['status' => 'Inactive', 'status_state' =>'Inactive']);
+                }
             }
 
             foreach($bookings as $details){
@@ -424,17 +432,17 @@ class CarsController extends Controller
                 $updated_at = ($details->booked_to);
                 // $booked_to = new \DateTime($details->booked_to);
                 
-                $now =strtotime(date("Y-m-d"));
-                $diff = ($return->diffInDays($booked_to)).' days';
-                DB::update("UPDATE bookings SET diff='$diff'");
+                // $now =strtotime(date("Y-m-d"));
+                // $diff = ($return->diffInDays($booked_to)).' days';
+                // DB::update("UPDATE bookings SET diff='$diff'");
                 
                 // $diff = $booked_to - $now;
                 // $difs = new \DateTime("@$dif");
                 // $diff = $now - $booked_to;
                 
-                if($diff < 0){
-                    // DB::update("UPDATE bookings SET status='Active'");
-                }
+                // if(startsWith($diff_format, "+0")){
+                //      DB::update("UPDATE bookings SET status='Active'");
+                // }
             }
 
             // for adding days to date
@@ -445,7 +453,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications','dates'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
