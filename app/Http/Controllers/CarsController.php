@@ -420,9 +420,10 @@ class CarsController extends Controller
                 if($date_diff <= 0){
                 DB::table('bookings')->where('id', $book_id)->update(['status' => 'Inactive', 'status_state' =>'Inactive']);
                 if($b_status == 'Inactive'){
-                    $cars = DB::select("SELECT car_id FROM bookings");
-                    foreach($cars as $details){
-                        DB::table('cars')->where('car_id', $cars_id)->update(['car_status' => 'Available']);
+                    $Cars = DB::select("SELECT car_id FROM bookings WHERE status='Inactive'");
+                    foreach($Cars as $details){
+                        $id = $details->car_id;
+                        DB::table('cars')->where('car_id', $id)->update(['car_status' => 'Available']);
                     }
                 }
                 }
