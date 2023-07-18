@@ -515,6 +515,9 @@ class CarsController extends Controller
             }elseif($rows->status_state == 'Cancelled'){
                 $message = "Sorry!!...Cannot approve a cancelled booking";
                 return redirect('admin/index')->with('message',$message);
+            } elseif($rows->status_state == 'Inactive'){
+                $message = "Sorry!!...Cannot approve an Inactive booking";
+                return redirect('admin/index')->with('message',$message);
             }else{
                 DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
                 return redirect('admin/index');
