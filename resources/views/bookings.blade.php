@@ -61,7 +61,7 @@
 </div>
 
 @if(count($bookings) > 0)
-<div class="container-fluid">
+<div class="container-fluid mt-3">
     <div class="table-responsive">
        <table class="table table-bordered table-dark table-hover" id="sample">
            <thead>
@@ -91,7 +91,12 @@
 </div>
 @else
 <div>
-    No bookings yet
+    <div class="alert alert-warning alert-dismissible fade show text-center mt-3"  role="alert" style="position:sticky">
+        <span class="font-weight-bold"><strong>No bookings found...Please search booking id</strong></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+             </div>
 </div>
 @endif
 </body>
