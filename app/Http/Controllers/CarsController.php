@@ -526,11 +526,21 @@ class CarsController extends Controller
     }
     //cancel booking
     public function cancel($booking_id){
-        DB::update("UPDATE bookings SET status='Inactive',status_state='Cancelled' WHERE booking_id='$booking_id'");
+        
         $book = DB::select("SELECT * FROM bookings WHERE booking_id='$booking_id'");
         foreach($book as $data){
-       
-           DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$data->car_id'");
+       if ($data->status == 'Inactive') {
+        $message = "Sorry!!...Cannot cancel an inactive booking";
+        return redirect('admin/index')->with('message',$message);
+       }elseif ($data->status == 'Active') {
+        DB::update("UPDATE bookings SET status='Inactive',status_state='Cancelled' WHERE booking_id='$booking_id'");
+
+        DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$data->car_id'");
+        
+        $message = "Booking cancelled successfully";
+                return redirect('admin/index')->with('message',$message);
+       }
+           
         }
         return redirect('admin/index');
     }
