@@ -82,7 +82,11 @@
                    <td>{{$item->car_name}}</td>
                    <td>{{$item->hire_duration}}</td>
                    <td>{{$item->total_price}}</td>
+                   @if($item->status == 'Inactive')
+                   <td><p class="btn btn-secondary">Inactive Booking</p></td>
+                   @else
                    <td><a href="{{url('cancel/bookings/'.$item->booking_id)}}" class="btn btn-warning mt-1 font-weight-bold mx-5">CANCEL BOOKING</a></td>
+                   @endif
                </tr>
                @endforeach
            </tbody>
