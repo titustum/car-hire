@@ -60,7 +60,7 @@
         </div>
 </div>
 
-
+@if(count($bookings) > 0)
 <div class="container-fluid">
     <div class="table-responsive">
        <table class="table table-bordered table-dark table-hover" id="sample">
@@ -89,6 +89,11 @@
        </table>
    </div>
 </div>
+@else
+<div>
+    No bookings yet
+</div>
+@endif
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
