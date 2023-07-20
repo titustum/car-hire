@@ -54,24 +54,26 @@
                 @csrf
                 <label class="font-weight-bold">Enter the booking id :</label>
             <input type="text" name="booking_id" class="form-control" placeholder="Enter the booking id" id="">
-            <input type="submit" value="LOAD SEARCH" class="font-weight-bold form-control btn btn-primary mt-2">
+            <input type="submit" value="LOAD SEARCH" class="font-weight-bold form-control btn btn-primary text-dark mt-2">
             </form>
             </div>
         </div>
 </div>
 
-
-<div class="container-fluid">
+@if(count($bookings) > 0)
+<div class="container-fluid mt-3">
     <div class="table-responsive">
        <table class="table table-bordered table-dark table-hover" id="sample">
            <thead>
                <tr>
-                   <th>#</th>
-                   <th>Booking id</th>
-                   <th>Car Name</th>
-                   <th>Duration</th>
-                   <th>Total Price</th>
-                   <th>Action</th>
+                   <th class="text-center font-weight-bold">#</th>
+                   <th class="text-center font-weight-bold">Booking id</th>
+                   <th class="text-center font-weight-bold">Car Name</th>
+                   <th class="text-center font-weight-bold">Duration</th>
+                   <th class="text-center font-weight-bold">Total Price</th>
+                   <th class="text-center font-weight-bold">Change Booking</th>
+                   <th class="text-center font-weight-bold">Cancel Booking</th>
+
                </tr>
            </thead>
            <tbody>
@@ -82,13 +84,31 @@
                    <td>{{$item->car_name}}</td>
                    <td>{{$item->hire_duration}}</td>
                    <td>{{$item->total_price}}</td>
+                   
+                    @if($item->status == 'Inactive')
+                   <td><p class="btn btn-secondary">Inactive Booking</p></td>
+                   <td><p class="btn btn-secondary">Inactive Booking</p></td>
+
+                   @else
+                    <td><a href="{{url('change/booking/' .$item->booking_id)}}" class="btn btn-primary font-weight-bold text-dark">CHANGE BOOKING</a></td>
                    <td><a href="{{url('cancel/bookings/'.$item->booking_id)}}" class="btn btn-warning mt-1 font-weight-bold mx-5">CANCEL BOOKING</a></td>
+                   @endif
                </tr>
                @endforeach
            </tbody>
        </table>
    </div>
 </div>
+@else
+<div>
+    <div class="alert alert-warning alert-dismissible fade show text-center mt-3"  role="alert" style="position:sticky">
+        <span class="font-weight-bold"><strong>No bookings found...Please search booking id</strong></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+             </div>
+</div>
+@endif
 </body>
 <script src="{{asset('bootstrap/jquery/jquery-3.5.1.min.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>

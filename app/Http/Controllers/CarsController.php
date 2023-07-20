@@ -354,6 +354,8 @@ class CarsController extends Controller
             return redirect('/admin/register')->with('error','The password doesnt match');
         }else{
            
+
+            
         $data = $request->all();
         // $check = $this->create($data);
         
@@ -423,34 +425,12 @@ class CarsController extends Controller
                     $Cars = DB::select("SELECT car_id FROM bookings WHERE status='Inactive'");
                     foreach($Cars as $details){
                         $id = $details->car_id;
-                        DB::table('cars')->where('car_id', $id)->update(['car_status' => 'Available']);
+                        //also working
+                        // DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$id'");
+                        DB::table('cars')->where('car_id', $details->car_id)->update(['car_status' => 'Available']);
                     }
                 }
                 }
-            }
-
-            foreach($bookings as $details){
-                // $created_at = Carbon::parse($details->created_at);
-                // $booked_to = Carbon::parse($details->booked_to);
-                $return = Carbon::now();
-                date_default_timezone_set('Africa/Nairobi');
-                // $updated_at =($details->updated_at);
-                $booked_to = Carbon::parse($details->booked_to);
-                $current = strtotime("current");
-                $updated_at = ($details->booked_to);
-                // $booked_to = new \DateTime($details->booked_to);
-                
-                // $now =strtotime(date("Y-m-d"));
-                // $diff = ($return->diffInDays($booked_to)).' days';
-                // DB::update("UPDATE bookings SET diff='$diff'");
-                
-                // $diff = $booked_to - $now;
-                // $difs = new \DateTime("@$dif");
-                // $diff = $now - $booked_to;
-                
-                // if(startsWith($diff_format, "+0")){
-                //      DB::update("UPDATE bookings SET status='Active'");
-                // }
             }
 
             // for adding days to date
@@ -461,7 +441,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications','Cars'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
@@ -535,6 +515,9 @@ class CarsController extends Controller
             }elseif($rows->status_state == 'Cancelled'){
                 $message = "Sorry!!...Cannot approve a cancelled booking";
                 return redirect('admin/index')->with('message',$message);
+            } elseif($rows->status_state == 'Inactive'){
+                $message = "Sorry!!...Cannot approve an Inactive booking";
+                return redirect('admin/index')->with('message',$message);
             }else{
                 DB::update("UPDATE bookings SET status_state='Approved' WHERE booking_id='$booking_id'");
                 return redirect('admin/index');
@@ -543,11 +526,21 @@ class CarsController extends Controller
     }
     //cancel booking
     public function cancel($booking_id){
-        DB::update("UPDATE bookings SET status='Inactive',status_state='Cancelled' WHERE booking_id='$booking_id'");
+        
         $book = DB::select("SELECT * FROM bookings WHERE booking_id='$booking_id'");
         foreach($book as $data){
-       
-           DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$data->car_id'");
+       if ($data->status == 'Inactive') {
+        $message = "Sorry!!...Cannot cancel an inactive booking";
+        return redirect('admin/index')->with('message',$message);
+       }elseif ($data->status == 'Active') {
+        DB::update("UPDATE bookings SET status='Inactive',status_state='Cancelled' WHERE booking_id='$booking_id'");
+
+        DB::update("UPDATE cars SET car_status='Available' WHERE car_id='$data->car_id'");
+        
+        $message = "Booking cancelled successfully";
+                return redirect('admin/index')->with('message',$message);
+       }
+           
         }
         return redirect('admin/index');
     }

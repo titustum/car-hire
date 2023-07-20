@@ -2,7 +2,8 @@
 ## CAR HIRE
 <br>
 
-Car Hire is a web application that allows users to rent cars quickly and easily. With Car Hire, you can search for cars by location, make, model, and other criteria. Once you've found a car that you're interested in, you can book it and pay for it using the app. Car Hire also allows you to track your rental history and manage your bookings.
+Car Hire is a web app that allows users to rent cars quickly and easily. With Car Hire, you can search for cars by location, make, model, and other criteria. Once you've found a car that you're interested in, you can book it and pay for it using the app. Car Hire also allows you to track your rental history and manage your bookings.
+
 
 
 ## Features
