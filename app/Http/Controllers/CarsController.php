@@ -84,7 +84,7 @@ class CarsController extends Controller
         $bookings = DB::select("SELECT * FROM bookings WHERE booking_id = '$request->booking_id'");
         return view('bookings', compact('bookings'));
     }
-    public function Types(){
+    public function Types(){ubmit
         return view('types');
     }
     public function Brand(){
@@ -221,6 +221,15 @@ class CarsController extends Controller
             $booking_id = $request['booking_id'];
             $total_price = $request['total_price'];
             $booking_status = $request['booking_status'];
+            $request->validate(
+                [
+                    "payment_type"=>"Required"
+                ],
+                [
+                    "payment_type.required"=>"Please select your payment method"
+                ]
+            )
+             
         // }
     // }
 
