@@ -111,8 +111,9 @@ z-index: 1;
 @foreach(session('data') as $id => $details)
 <div class="container">
     <div class="card">
-<form action="{{url('proceed/payment/'.$id)}}" method="post">
+<form action="{{url('proceed/payment/'.$id)}}" method="POST">
     @csrf
+    @METHOD ('POST')
     <div class="card-header">
     <label class="font-weight-bold">Car Image :</label>
 <img src="../../images/{{$details['car_image']}}" alt="selected car image" height="200vh" width="200vw" style="border-radius:50%">

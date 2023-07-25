@@ -84,7 +84,7 @@ class CarsController extends Controller
         $bookings = DB::select("SELECT * FROM bookings WHERE booking_id = '$request->booking_id'");
         return view('bookings', compact('bookings'));
     }
-    public function Types(){ubmit
+    public function Types(){
         return view('types');
     }
     public function Brand(){
@@ -206,6 +206,16 @@ class CarsController extends Controller
     }
     //pay
     public function submit(Request $request){
+
+         // $request->validate(
+         //        [
+         //            "method"=>"Required"
+         //        ],
+         //        [
+         //            "method.required"=>"Please select your payment method"
+         //        ]
+         //    );
+
         date_default_timezone_set('Africa/Nairobi');
         // if(session('data')){
         // foreach(session('data') as $id =>$items){
@@ -221,14 +231,7 @@ class CarsController extends Controller
             $booking_id = $request['booking_id'];
             $total_price = $request['total_price'];
             $booking_status = $request['booking_status'];
-            $request->validate(
-                [
-                    "payment_type"=>"Required"
-                ],
-                [
-                    "payment_type.required"=>"Please select your payment method"
-                ]
-            )
+           
              
         // }
     // }
