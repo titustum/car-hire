@@ -207,71 +207,70 @@ class CarsController extends Controller
     //pay
     public function submit(Request $request){
 
-         // $request->validate(
-         //        [
-         //            "method"=>"Required"
-         //        ],
-         //        [
-         //            "method.required"=>"Please select your payment method"
-         //        ]
-         //    );
+        //  $request->validate(
+        //         [
+        //             "method"=>"Required"
+        //         ],
+        //         [
+        //             "method.required"=>"Please select your payment method"
+        //         ]
+        //     );
+            
+    date_default_timezone_set('Africa/Nairobi');
+    // if(session('data')){
+    // foreach(session('data') as $id =>$items){
+    $car_id = $request['car_id'];
+    $fullname = $request['fullname'];
+    $phone = $request['phone'];
+    $email = $request['email'];
+    $car_name = $request['car_name'];
+    $car_price = $request['car_price'];
+    $location = $request['location'];
+    $days = $request['days'];
+    $hire_duration = $request['hire_duration'];
+    $booking_id = $request['booking_id'];
+    $total_price = $request['total_price'];
+    $booking_status = $request['booking_status'];
 
-        date_default_timezone_set('Africa/Nairobi');
-        // if(session('data')){
-        // foreach(session('data') as $id =>$items){
-            $car_id = $request['car_id'];
-            $fullname = $request['fullname'];
-            $phone = $request['phone'];
-            $email = $request['email'];
-            $car_name = $request['car_name'];
-            $car_price = $request['car_price'];
-            $location = $request['location'];
-            $days = $request['days'];
-            $hire_duration = $request['hire_duration'];
-            $booking_id = $request['booking_id'];
-            $total_price = $request['total_price'];
-            $booking_status = $request['booking_status'];
-           
-             
-        // }
+
+    // }
     // }
 
-        $client=new Client;
-        $client->booking_id = $booking_id;
-        $client->fullname = $fullname;
-        $client->phone = $phone;
-        $client->email = $email;
-        $client->location = $location;
-        $client->days = $days .'day(s)';
-        $client->save();
+    $client = new Client();
+    $client->booking_id = $booking_id;
+    $client->fullname = $fullname;
+    $client->phone = $phone;
+    $client->email = $email;
+    $client->location = $location;
+    $client->days = $days .'day(s)';
+    $client->save();
 
 
-       $booked_time=strtotime("current");
-       $booked_time = date('Y-m-d  H:i:s');
+    $booked_time=strtotime("current");
+    $booked_time = date('Y-m-d  H:i:s');
 
-         $return = Carbon::now();
-         $date = $return->addDays($days);
+    $return = Carbon::now();
+    $date = $return->addDays($days);
 
-          $booking = new Booking;
-          $booking->booking_id = $booking_id;
-          $booking->car_id = $car_id;
-          $booking->fullname = $fullname;
-          $booking->phone = $phone;
-          $booking->car_name = $car_name;
-          $booking->car_price = $car_price;
-          $booking->hire_duration = $days;
-          $booking->total_price = $total_price;
-          $booking->status = $booking_status;
-          $booking->status_state = 'Pending approval..';
-          $booking->booked_to = $date;
-          $booking->save();
+    $booking = new Booking();
+    $booking->booking_id = $booking_id;
+    $booking->car_id = $car_id;
+    $booking->fullname = $fullname;
+    $booking->phone = $phone;
+    $booking->car_name = $car_name;
+    $booking->car_price = $car_price;
+    $booking->hire_duration = $days;
+    $booking->total_price = $total_price;
+    $booking->status = $booking_status;
+    $booking->status_state = 'Pending approval..';
+    $booking->booked_to = $date;
+    $booking->save();
 
-          DB::update("UPDATE cars SET car_status = 'Booked' WHERE car_id = '$car_id'");
-          
-          
-          session()->forget('data');
-          return redirect('/')->with('success', 'Your booking has been received successfully');
+    DB::update("UPDATE cars SET car_status = 'Booked' WHERE car_id = '$car_id'");
 
+
+    session()->forget('data');
+    return redirect('/')->with('success', 'Your booking has been received successfully');
     }
 
 

@@ -123,14 +123,14 @@ z-index: 1;
             @endif
             <label class="font-weight-bold">Select platform :</label>
             <select name="method" class="form-control" id="">
-                <option value="">--Choose a plartform--</option>
-                <option value="">M-Pesa</option>
-                <option value="">Cash at Office</option>
-                <option value="">Mobile Banking</option>
-           <!--  </select>
-              @if ($errors->has('method'))
-            <span class="text-danger">{{ $errors->first('method') }}</span><br>
-            @endif -->
+                <option value=" ">--Choose a plartform--</option>
+                <option>M-Pesa</option>
+                <option>Cash at Office</option>
+                <option>Mobile Banking</option>
+            </select>
+              {{-- @if ($errors()->has('method'))
+            <span class="text-danger">{{ $errors()->first('method') }}</span><br>
+            @endif  --}}
             {{-- hidden inputs for data capture --}}
             <input type="text" name="car_id" class="form-control" value="{{$details['car_id']}}" hidden>
             <input type="text" name="booking_id" class="form-control" value="{{$details['booking_id']}}" hidden>
