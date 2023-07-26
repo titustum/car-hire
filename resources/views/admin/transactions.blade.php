@@ -26,10 +26,10 @@
                     <a class="nav-link" href="{{url('/admin/index')}}" style="font-size: 20px">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('brands')}}" style="font-size: 20px">Brands/Models</a>
+                    <a class="nav-link" href="{{url('brands')}}" style="font-size: 20px">Revenue Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('types')}}" style="font-size: 20px">Car Types</a>
+                    <a class="nav-link" href="{{url('types')}}" style="font-size: 20px">Bookings</a>
                 </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{url('listings')}}" style="font-size: 20px">Car Listing</a>
