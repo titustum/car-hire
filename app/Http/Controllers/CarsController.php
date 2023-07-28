@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Carbon\Carbon;
@@ -110,7 +111,26 @@ class CarsController extends Controller
     }
     //charts
     public function charts(){
-        return view('admin.charts');
+        $data = DB::select("SELECT total_price,updated_at FROM bookings ");
+        $key = array_column($data,'updated_at');
+        $value = array_column($data,'total_price');
+
+        $chart = [
+            "labels" => $key,
+            "values" => $value,
+        ];
+    
+        // return $chart;
+
+        $data = [
+            "jan"=>"200",
+            "feb"=>"300",
+            "aug"=>"900"
+        ];
+        // $chart = create_graph($data);
+
+        // echo json_encode($chart);
+        return View::make('admin/charts',['chart'=>$chart]);
     }
     public function Setting(){
         if(Auth::check()){
