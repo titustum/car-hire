@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Carbon\Carbon;
@@ -110,7 +111,26 @@ class CarsController extends Controller
     }
     //charts
     public function charts(){
-        return view('admin.charts');
+        $data = DB::select("SELECT total_price,updated_at FROM bookings ");
+        $key = array_column($data,'updated_at');
+        $value = array_column($data,'total_price');
+
+        $chart = [
+            "labels" => $key,
+            "values" => $value,
+        ];
+    
+        // return $chart;
+
+        $data = [
+            "jan"=>"200",
+            "feb"=>"300",
+            "aug"=>"900"
+        ];
+        // $chart = create_graph($data);
+
+        // echo json_encode($chart);
+        return View::make('admin/charts',['chart'=>$chart]);
     }
     public function Setting(){
         if(Auth::check()){
@@ -206,60 +226,71 @@ class CarsController extends Controller
     }
     //pay
     public function submit(Request $request){
-        date_default_timezone_set('Africa/Nairobi');
-        // if(session('data')){
-        // foreach(session('data') as $id =>$items){
-            $car_id = $request['car_id'];
-            $fullname = $request['fullname'];
-            $phone = $request['phone'];
-            $email = $request['email'];
-            $car_name = $request['car_name'];
-            $car_price = $request['car_price'];
-            $location = $request['location'];
-            $days = $request['days'];
-            $hire_duration = $request['hire_duration'];
-            $booking_id = $request['booking_id'];
-            $total_price = $request['total_price'];
-            $booking_status = $request['booking_status'];
-        // }
+
+        //  $request->validate(
+        //         [
+        //             "method"=>"Required"
+        //         ],
+        //         [
+        //             "method.required"=>"Please select your payment method"
+        //         ]
+        //     );
+            
+    date_default_timezone_set('Africa/Nairobi');
+    // if(session('data')){
+    // foreach(session('data') as $id =>$items){
+    $car_id = $request['car_id'];
+    $fullname = $request['fullname'];
+    $phone = $request['phone'];
+    $email = $request['email'];
+    $car_name = $request['car_name'];
+    $car_price = $request['car_price'];
+    $location = $request['location'];
+    $days = $request['days'];
+    $hire_duration = $request['hire_duration'];
+    $booking_id = $request['booking_id'];
+    $total_price = $request['total_price'];
+    $booking_status = $request['booking_status'];
+
+
+    // }
     // }
 
-        $client=new Client;
-        $client->booking_id = $booking_id;
-        $client->fullname = $fullname;
-        $client->phone = $phone;
-        $client->email = $email;
-        $client->location = $location;
-        $client->days = $days .'day(s)';
-        $client->save();
+    $client = new Client();
+    $client->booking_id = $booking_id;
+    $client->fullname = $fullname;
+    $client->phone = $phone;
+    $client->email = $email;
+    $client->location = $location;
+    $client->days = $days .'day(s)';
+    $client->save();
 
 
-       $booked_time=strtotime("current");
-       $booked_time = date('Y-m-d  H:i:s');
+    $booked_time=strtotime("current");
+    $booked_time = date('Y-m-d  H:i:s');
 
-         $return = Carbon::now();
-         $date = $return->addDays($days);
+    $return = Carbon::now();
+    $date = $return->addDays($days);
 
-          $booking = new Booking;
-          $booking->booking_id = $booking_id;
-          $booking->car_id = $car_id;
-          $booking->fullname = $fullname;
-          $booking->phone = $phone;
-          $booking->car_name = $car_name;
-          $booking->car_price = $car_price;
-          $booking->hire_duration = $days;
-          $booking->total_price = $total_price;
-          $booking->status = $booking_status;
-          $booking->status_state = 'Pending approval..';
-          $booking->booked_to = $date;
-          $booking->save();
+    $booking = new Booking();
+    $booking->booking_id = $booking_id;
+    $booking->car_id = $car_id;
+    $booking->fullname = $fullname;
+    $booking->phone = $phone;
+    $booking->car_name = $car_name;
+    $booking->car_price = $car_price;
+    $booking->hire_duration = $days;
+    $booking->total_price = $total_price;
+    $booking->status = $booking_status;
+    $booking->status_state = 'Pending approval..';
+    $booking->booked_to = $date;
+    $booking->save();
 
-          DB::update("UPDATE cars SET car_status = 'Booked' WHERE car_id = '$car_id'");
-          
-          
-          session()->forget('data');
-          return redirect('/')->with('success', 'Your booking has been received successfully');
+    DB::update("UPDATE cars SET car_status = 'Booked' WHERE car_id = '$car_id'");
 
+
+    session()->forget('data');
+    return redirect('/')->with('success', 'Your booking has been received successfully');
     }
 
 

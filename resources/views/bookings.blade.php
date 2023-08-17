@@ -88,7 +88,7 @@
                     @if($item->status == 'Inactive')
                    <td><p class="btn btn-secondary">Inactive Booking</p></td>
                    <td><p class="btn btn-secondary">Inactive Booking</p></td>
-
+<!-- buttons -->
                    @else
                     <td><a href="{{url('change/booking/' .$item->booking_id)}}" class="btn btn-primary font-weight-bold text-dark">CHANGE BOOKING</a></td>
                    <td><a href="{{url('cancel/bookings/'.$item->booking_id)}}" class="btn btn-warning mt-1 font-weight-bold mx-5">CANCEL BOOKING</a></td>
