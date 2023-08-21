@@ -111,6 +111,7 @@ class CarsController extends Controller
     }
     //charts
     public function charts(){
+        $notifications = Booking::where('status_state','Pending approval..')->count();
         $data = DB::select("SELECT total_price,updated_at FROM bookings ");
         $key = array_column($data,'updated_at');
         $value = array_column($data,'total_price');
@@ -130,7 +131,7 @@ class CarsController extends Controller
         // $chart = create_graph($data);
 
         // echo json_encode($chart);
-        return View::make('admin/charts',['chart'=>$chart]);
+        return View::make('admin/charts',['chart'=>$chart,'notifications'=>$notifications]);
     }
     public function Setting(){
         if(Auth::check()){
