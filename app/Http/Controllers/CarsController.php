@@ -455,7 +455,7 @@ class CarsController extends Controller
                 DB::table('bookings')->where('id', $book_id)->update(['status' => 'Inactive', 'status_state' =>'Inactive']);
                 if($b_status == 'Inactive'){
                     $Cars = DB::select("SELECT car_id FROM bookings WHERE status='Inactive'");
-
+                    
                     foreach($Cars as $details){
                         $id = $details->car_id;
                         //also working
@@ -507,7 +507,7 @@ class CarsController extends Controller
         $random = substr(($request->car_brand),0,3). random_int(10000,99999);
         $request->validate(
             [
-                "car_image"=>"required|image|mimes:.jpeg,.png,.jpg,.gif,.svg",
+                "car_image"=>"required|image|mimes:jpeg,png,jpg,gif,svg",
                 "car_name"=>"required",
                 "car_brand"=>"required",
                 "car_type"=>"required",
