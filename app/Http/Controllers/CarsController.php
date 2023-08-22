@@ -455,6 +455,7 @@ class CarsController extends Controller
                 DB::table('bookings')->where('id', $book_id)->update(['status' => 'Inactive', 'status_state' =>'Inactive']);
                 if($b_status == 'Inactive'){
                     $Cars = DB::select("SELECT car_id FROM bookings WHERE status='Inactive'");
+                    
                     foreach($Cars as $details){
                         $id = $details->car_id;
                         //also working
