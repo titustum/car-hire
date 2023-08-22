@@ -18,6 +18,7 @@ return new class extends Migration
     $table->bigInteger('phone')->unique();
     $table->string('email')->unique();
     $table->string('location');
+    $table->bigInteger('days');
     $table->timestamps();
 }
         );

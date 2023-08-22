@@ -23,8 +23,9 @@ return new class extends Migration
             $table->string('total_price');
             $table->string('status');
             $table->string('status_state');
-            $table->time('booked_at');
+            $table->date('booked_to');
             $table->timestamps();
+            $table->string('diff');
         }
                 );
     }
