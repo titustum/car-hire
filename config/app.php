@@ -57,7 +57,7 @@ return [
 
     'url' => 'https://car-hire-production.up.railway.app/',
 
-    'asset_url' => 'https://car-hire-production.up.railway.app/public'
+    'asset_url' => 'https://car-hire-production.up.railway.app/',
 
     /*
     |--------------------------------------------------------------------------
