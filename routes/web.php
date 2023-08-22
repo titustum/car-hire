@@ -26,7 +26,7 @@ Route::get('login',function(){
 });
 //register route
 Route::get('register',function(){
-    return view('register');
+    return view('admin/register');
 });
 //admin home page
 // Route::get('/admin/index',function(){
