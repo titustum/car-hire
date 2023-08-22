@@ -473,7 +473,7 @@ class CarsController extends Controller
             // }
 
 
-            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications','Cars'));
+            return view('/admin/index', compact('clients','cars','rented_cars','bookings','rented_cars_today','notifications'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access this page..Login first');
