@@ -85,9 +85,7 @@
 $now = date('Y-m-d');
 // echo $now;
 ?>
-@foreach($Cars as $details)
-{{$details->car_id}}
-@endforeach
+
 
 
 <div class="container-fluid" >
