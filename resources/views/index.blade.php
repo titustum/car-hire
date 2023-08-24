@@ -137,7 +137,7 @@
           <div class="col-md-3 mb-2" >
             <div class="card" style="height: 52vh">
                 <div class="card-img">
-                    <img src="images/{{$item->car_image}}" class="img-fluid" alt="Vehicle image" style="height: 30vh;width:100vw">     
+                    <img src="storage/app/public/images/{{$item->car_image}}" class="img-fluid" alt="Vehicle image" style="height: 30vh;width:100vw">     
                 </div>
                 {{-- <div class="card-title">
                     <p style="margin-top: -30vh;font-size:20px;text-transform:uppercase;background-color:yellow" class="font-weight-bold">booked</p>
