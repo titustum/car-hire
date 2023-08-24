@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    // 'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => 'public'
 
     /*
     |--------------------------------------------------------------------------
@@ -38,8 +39,9 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => 'https://car-hire-production.up.railway.app/'.'/storage',
+            // 'root' => storage_path('app/public'),
+            'root' => public_path(),
+            'url' => 'https://car-hire-production.up.railway.app/',
             // 'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
