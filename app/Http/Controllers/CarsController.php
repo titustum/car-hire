@@ -524,7 +524,7 @@ class CarsController extends Controller
             );
             $file = $request->file('car_image');
         $fileName = date('YmdHi').$file->getClientOriginalName();
-        $file-> move(public_path('/images'), $fileName);
+        $file-> move(storage_path('/images'), $fileName);
         // $request->_car_image->storeAs('public/images', $fileName);
         date_default_timezone_set('Africa/Nairobi');
         $cars = new Car();
