@@ -137,7 +137,7 @@
           <div class="col-md-3 mb-2" >
             <div class="card" style="height: 52vh">
                 <div class="card-img">
-                    <img src="storage/app/public/images/{{$item->car_image}}" class="img-fluid" alt="Vehicle image" style="height: 30vh;width:100vw">     
+                    <img src="{{asset('images/{{$item->car_image')}}" class="img-fluid" alt="Vehicle image" style="height: 30vh;width:100vw">     
                 </div>
                 {{-- <div class="card-title">
                     <p style="margin-top: -30vh;font-size:20px;text-transform:uppercase;background-color:yellow" class="font-weight-bold">booked</p>
@@ -186,7 +186,7 @@
           <div class="col-md-3">
             <div class="card" style="height: 52vh">
                 {{-- <div class="card-header"> --}}
-                    <img src="images/nissan.jpg" class="img-fluid" alt="" style="height:28vh">
+                    <img src="images/nissan.JPG" class="img-fluid" alt="" style="height:28vh">
                 {{-- </div> --}}
               <div class="card-body">
                 <h3 class="card-title">Nissan Y62</h3>
