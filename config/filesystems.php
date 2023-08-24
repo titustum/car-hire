@@ -38,8 +38,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path() . '/images',
-            'url' => 'https://car-hire-production.up.railway.app'.'/public',
+            'root' => storage_path('app/public'),
+            'url' => 'https://car-hire-production.up.railway.app/'.'/storage',
             // 'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
