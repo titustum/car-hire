@@ -233,7 +233,7 @@
     <div class="row">
         <div class="col-md-5">
             <div class="card">
-            <img src="images/nissan.jpg" style="float: left" class="img-fluid" alt="about_us">
+            <img src="images/nissan.JPG" style="float: left" class="img-fluid" alt="about_us">
     </div>
         </div>
     <div class="content text-center col-md-7">
