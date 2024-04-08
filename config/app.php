@@ -55,9 +55,12 @@ return [
     |
     */
 
-    'url' => 'https://car-hire-production.up.railway.app/',
+    // 'url' => 'https://car-hire-production.up.railway.app/',
 
-    'asset_url' => 'https://car-hire-production.up.railway.app/',
+    // 'asset_url' => 'https://car-hire-production.up.railway.app/',
+    'url' => env('APP_URL', 'http://localhost'),
+
+    'asset_url' => env('ASSET_URL'),
 
     /*
     |--------------------------------------------------------------------------
